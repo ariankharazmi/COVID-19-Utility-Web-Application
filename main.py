@@ -1,21 +1,32 @@
 import requests
 import urllib3
-from bs4 import BeautifulSoup
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as soup
 import numpy as np
 import tkinter as tk ##placeholder for later usage##
 import streamlit as st
+import base64
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+import altair as alt
+import streamlit.components.v1 as components
+from pandas.io.json import json_normalize
+from datetime import date
+import json
 
-
+##URL for webscraping National U.S COVID Data
 html_text = requests.get('https://www.worldometers.info/coronavirus/country/us/')
 soup = BeautifulSoup(html_text, 'lxml')
-webdata = soup.findall('li', class_ = 'maincounter-number')
+webscrapenum = soup.findall('li', class_ = 'maincounter-number')
 
+today = date.today()
 
 
 #Streamlit Main Webpage Header and Info
 st.title('COVID-19 Utility Web Application')
 st.markdown("""
-* **Python libraries:** urllib3, numpy, tkinter, streamlit, beautifulsoup4
+* **Python libraries:** urllib3, numpy, tkinter, streamlit, beautifulsoup4, base64, seaborn, pandas, matplotlib
 * **Data source (COVID Data API):** [COVID-Act-Now.com](https://apidocs.covidactnow.org/)""")
 st.write("""
 This webpage uses COVID Data API to gather accurate data and present it in one place.
@@ -24,9 +35,25 @@ This webpage uses COVID Data API to gather accurate data and present it in one p
 ***
 """)
 
+
+sidebar_selection = st.sidebar.radio(
+    'Select data:',
+    ['Select Counties', 'U.S'],
+)
+
 st.header('Enter corresponding information into your console/terminal')
 
 st.subheader('COVID Data for State and County:')
+selected_state = st.sidebar.selectbox('State', dict())
+selected_county = st.sidebar.selectbox('County', dict())
+
+st.dataframe(df_selected_sector)
+#df = load_data()
+sorted_sector_unique = sorted( df['Total U.S COVID Cases']).unique() )
+sorted_sector_unique = sorted( df['Total U.S COVID Deaths']).unique() )
+sorted_sector_unique = sorted( df['Total U.S COVID Recovered Cases']).unique() )
+selected_sector = st.sidebar.multiselect('Sector', sorted_sector_unique)
+
 
 
 ##State COVID Data **needs fixing**
