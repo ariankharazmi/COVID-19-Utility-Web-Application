@@ -1,10 +1,11 @@
 import requests
-import urllib3
-from urllib.request import urlopen
+#from bs4 import BeautifulSoup as soup
+from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup as soup
 import numpy as np
 import tkinter as tk ##placeholder for later usage##
 import streamlit as st
+
 import base64
 import seaborn as sns
 import pandas as pd
@@ -15,12 +16,25 @@ from pandas.io.json import json_normalize
 from datetime import date
 import json
 
-##URL for webscraping National U.S COVID Data
-html_text = requests.get('https://www.worldometers.info/coronavirus/country/us/')
-soup = BeautifulSoup(html_text, 'lxml')
-webscrapenum = soup.findall('li', class_ = 'maincounter-number')
+_ENABLE_PROFILING = False
+
+if _ENABLE_PROFILING:
+    import cProfile, pstats, io
+    from pstats import SortKey
+    pr = cProfile.Profile()
+    pr.enable()
 
 today = date.today()
+
+
+##URL for webscraping National U.S COVID Data
+html_text = requests.get('https://www.worldometers.info/coronavirus/country/us/')
+webpage = urlopen(response).read()
+html = soup(webpage, "html.parser")
+webscrapenum = soup.findall('li', class_ = '#maincounter-number')
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'}
+response = Request(url, headers = headers)
+
 
 
 #Streamlit Main Webpage Header and Info
@@ -38,8 +52,15 @@ This webpage uses COVID Data API to gather accurate data and present it in one p
 
 sidebar_selection = st.sidebar.radio(
     'Select data:',
-    ['Select Counties', 'U.S'],
+    ['Select States', 'Select Counties', 'U.S'],
 )
+
+
+
+
+
+
+
 
 st.header('Enter corresponding information into your console/terminal')
 
@@ -76,70 +97,6 @@ print(cases)
 dictionary_1 = dict(zip(states, cases))
 dictionary_2 = dict(zip(counties, cases))
 ##dictionary = dict(zip(states, deaths))
-
-
-
-#US State Data and Abbreviations
-us_state_to_abbrev = {
-    "Alabama": "AL",
-    "Alaska": "AK",
-    "Arizona": "AZ",
-    "Arkansas": "AR",
-    "California": "CA",
-    "Colorado": "CO",
-    "Connecticut": "CT",
-    "Delaware": "DE",
-    "Florida": "FL",
-    "Georgia": "GA",
-    "Hawaii": "HI",
-    "Idaho": "ID",
-    "Illinois": "IL",
-    "Indiana": "IN",
-    "Iowa": "IA",
-    "Kansas": "KS",
-    "Kentucky": "KY",
-    "Louisiana": "LA",
-    "Maine": "ME",
-    "Maryland": "MD",
-    "Massachusetts": "MA",
-    "Michigan": "MI",
-    "Minnesota": "MN",
-    "Mississippi": "MS",
-    "Missouri": "MO",
-    "Montana": "MT",
-    "Nebraska": "NE",
-    "Nevada": "NV",
-    "New Hampshire": "NH",
-    "New Jersey": "NJ",
-    "New Mexico": "NM",
-    "New York": "NY",
-    "North Carolina": "NC",
-    "North Dakota": "ND",
-    "Ohio": "OH",
-    "Oklahoma": "OK",
-    "Oregon": "OR",
-    "Pennsylvania": "PA",
-    "Rhode Island": "RI",
-    "South Carolina": "SC",
-    "South Dakota": "SD",
-    "Tennessee": "TN",
-    "Texas": "TX",
-    "Utah": "UT",
-    "Vermont": "VT",
-    "Virginia": "VA",
-    "Washington": "WA",
-    "West Virginia": "WV",
-    "Wisconsin": "WI",
-    "Wyoming": "WY",
-    "District of Columbia": "DC",
-    "American Samoa": "AS",
-    "Guam": "GU",
-    "Northern Mariana Islands": "MP",
-    "Puerto Rico": "PR",
-    "United States Minor Outlying Islands": "UM",
-    "U.S. Virgin Islands": "VI",
-}
-## US State County Data
 
 
 ## U.S State Input
@@ -180,3 +137,39 @@ print("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 
 st.write("There are " + str(dictionary_1[state_key]) + " total confirmed COVID-19 cases in " + state)
 st.write("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 cases in " + county)
 ##print("There are " + str(dictionary[state_key]) + " total deaths in " + state)
+
+t1, t2 = st.columns(2)
+with t1:
+    st.markdown('# COVID-19 Utility Data Dashboard')
+
+with t2:
+    st.write("")
+    st.write("")
+    st.write("""
+    **Built by Arian Kharazmi**
+    """)
+
+# Streamlit Sidebar Description Info
+with st.sidebar.expander("Click here to learn more about the COVID-19 Utility (Web-Application)"):
+    st.markdown(f"""
+    The COVID-19 Utility Web Application was developed to track and monitor data regarding the Coronavirus Pandemic to better understand the data surrounding it, in an easy-to-use, friendly manner.
+    
+    COVID Data traced from:
+    [COVID-19 Data Repository](https://github.com/CSSEGISandData/COVID-19)[*Johns Hopkins University*]
+    https://covidactnow.org/[*COVIDActNow Org*]  
+    
+    *Utility last updated on {str(today)}.*  
+    """)
+
+# Stat Sorter
+if _ENABLE_PROFILING:
+    pr.disable()
+    s = io.StringIO()
+    sortby = SortKey.CUMULATIVE
+    ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+    ps.print_stats()
+    ts = int(time.time())
+    with open(f"perf_{ts}.txt", "w") as f:
+        f.write(s.getvalue())
+
+# end
