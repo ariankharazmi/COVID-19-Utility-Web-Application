@@ -1,9 +1,13 @@
+import time
+
 import requests
 #from bs4 import BeautifulSoup as soup
 from urllib.request import Request, urlopen
+
+import response as response
+from altair.examples.pyramid import df
 from bs4 import BeautifulSoup as soup
 import numpy as np
-import tkinter as tk ##placeholder for later usage##
 import streamlit as st
 
 import base64
@@ -15,6 +19,13 @@ import streamlit.components.v1 as components
 from pandas.io.json import json_normalize
 from datetime import date
 import json
+
+from urllib3.util import url
+
+from statedata import us_state_to_abbrev
+from countydata import us_state_county
+
+
 
 _ENABLE_PROFILING = False
 
@@ -57,22 +68,17 @@ sidebar_selection = st.sidebar.radio(
 
 
 
-
-
-
-
-
 st.header('Enter corresponding information into your console/terminal')
 
 st.subheader('COVID Data for State and County:')
 selected_state = st.sidebar.selectbox('State', dict())
 selected_county = st.sidebar.selectbox('County', dict())
 
-st.dataframe(df_selected_sector)
+#st.dataframe(df_selected_sector)
 #df = load_data()
-sorted_sector_unique = sorted( df['Total U.S COVID Cases']).unique() )
-sorted_sector_unique = sorted( df['Total U.S COVID Deaths']).unique() )
-sorted_sector_unique = sorted( df['Total U.S COVID Recovered Cases']).unique() )
+sorted_sector_unique = sorted( df['Total U.S COVID Cases']).unique()
+sorted_sector_unique = sorted( df['Total U.S COVID Deaths']).unique()
+sorted_sector_unique = sorted( df['Total U.S COVID Recovered Cases']).unique()
 selected_sector = st.sidebar.multiselect('Sector', sorted_sector_unique)
 
 
@@ -89,6 +95,21 @@ data = response.json()
 states = [x["state"] for x in data]
 cases = [x["actuals"]["cases"] for x in data]
 ##deaths = [x["actuals"]["deaths"] for x in data]
+
+
+def get_data():
+    US_confirmed = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv'
+    US_deaths = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv'
+    confirmed = pd.read_csv(US_confirmed)
+    deaths = pd.read_csv(US_deaths)
+    return confirmed, deaths
+
+confirmed, deaths = get_data()
+FIPSs = confirmed.groupby(['Province_State', 'Admin2']).FIPS.unique().apply(pd.Series).reset_index()
+FIPSs.columns = ['State', 'County', 'FIPS']
+FIPSs['FIPS'].fillna(0, inplace = True)
+FIPSs['FIPS'] = FIPSs.FIPS.astype(int).astype(str).str.zfill(5)
+
 
 counties = [x["county"] for x in data]
 cases = [x["actuals"]["cases"] for x in data]
@@ -160,6 +181,13 @@ with st.sidebar.expander("Click here to learn more about the COVID-19 Utility (W
     
     *Utility last updated on {str(today)}.*  
     """)
+
+st.write("""
+Quick Web Links
+
+**This is an early version of the program, please do not take COVID data presented here as an accurate reflection.**
+***
+""")
 
 # Stat Sorter
 if _ENABLE_PROFILING:
