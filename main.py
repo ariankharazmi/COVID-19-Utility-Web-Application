@@ -4,7 +4,6 @@ import requests
 #from bs4 import BeautifulSoup as soup
 from urllib.request import Request, urlopen
 
-import response as response
 from altair.examples.pyramid import df
 from bs4 import BeautifulSoup as soup
 import numpy as np
@@ -39,20 +38,21 @@ today = date.today()
 
 
 ##URL for webscraping National U.S COVID Data
-html_text = requests.get('https://www.worldometers.info/coronavirus/country/us/')
-webpage = urlopen(response).read()
-html = soup(webpage, "html.parser")
-webscrapenum = soup.findall('li', class_ = '#maincounter-number')
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'}
-response = Request(url, headers = headers)
+#html_text = requests.get('https://www.worldometers.info/coronavirus/country/us/')
+#webpage = urlopen(response).read()
+#html = soup(webpage, "html.parser")
+#webscrapenum = soup.findall('li', class_ = '#maincounter-number')
+#headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'}
+#response = Request(url, headers = headers)
 
 
 
 #Streamlit Main Webpage Header and Info
 st.title('COVID-19 Utility Web Application')
 st.markdown("""
-* **Python libraries:** urllib3, numpy, tkinter, streamlit, beautifulsoup4, base64, seaborn, pandas, matplotlib
-* **Data source (COVID Data API):** [COVID-Act-Now.com](https://apidocs.covidactnow.org/)""")
+* **Data sources: (COVID Data API(s):** [COVID-Act-Now.com](https://apidocs.covidactnow.org/), [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)""")
+
+
 st.write("""
 This webpage uses COVID Data API to gather accurate data and present it in one place.
 
@@ -63,7 +63,7 @@ This webpage uses COVID Data API to gather accurate data and present it in one p
 
 sidebar_selection = st.sidebar.radio(
     'Select data:',
-    ['Select States', 'Select Counties', 'U.S'],
+    ['Select State', 'Select County', 'U.S National Data'],
 )
 
 
@@ -76,10 +76,10 @@ selected_county = st.sidebar.selectbox('County', dict())
 
 #st.dataframe(df_selected_sector)
 #df = load_data()
-sorted_sector_unique = sorted( df['Total U.S COVID Cases']).unique()
-sorted_sector_unique = sorted( df['Total U.S COVID Deaths']).unique()
-sorted_sector_unique = sorted( df['Total U.S COVID Recovered Cases']).unique()
-selected_sector = st.sidebar.multiselect('Sector', sorted_sector_unique)
+#sorted_sector_unique = sorted( df['Total U.S COVID Cases']).unique()
+#sorted_sector_unique = sorted( df['Total U.S COVID Deaths']).unique()
+#sorted_sector_unique = sorted( df['Total U.S COVID Recovered Cases']).unique()
+#selected_sector = st.sidebar.multiselect('Sector', sorted_sector_unique)
 
 
 
@@ -159,9 +159,46 @@ st.write("There are " + str(dictionary_1[state_key]) + " total confirmed COVID-1
 st.write("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 cases in " + county)
 ##print("There are " + str(dictionary[state_key]) + " total deaths in " + state)
 
+
+# Streamlit Sidebar Description Info
+with st.sidebar.expander("Click here to learn more about the COVID-19 Utility (Web-Application)"):
+    st.markdown(f"""
+    The COVID-19 Utility Web Application was developed to track and monitor data regarding the Coronavirus Pandemic to better understand the data surrounding it, in an easy-to-use, friendly manner.
+    
+    COVID Data traced from:
+    [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19), [*COVIDActNow Org*](https://covidactnow.org/)
+    
+    *Utility last updated on {str(today)}.*  
+    """)
+
+st.write("""
+
+**This is an early version of the program, please do not take COVID data presented here as an accurate reflection.**
+***
+
+""")
+
+st.write("""
+* **Quick Web Links**
+
+[**CDC Coronavirus Statistics Website**](https://www.cdc.gov/coronavirus/2019-nCoV/index.html)""")
+st.write("""
+[**New York Times Coronavirus Statistics Website**](https://www.nytimes.com/interactive/2021/us/covid-cases.html)""")
+st.write("""
+[**Do I Have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html)""")
+st.write("""
+[**What should I do if I have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/if-you-are-sick/steps-when-sick.html)""")
+st.write("""
+[**Where can I get masks, vaccines, and tests?**](https://www.covid.gov/)""")
+st.write("""
+[**COVID-19 Common Questions**](https://www.fda.gov/emergency-preparedness-and-response/coronavirus-disease-2019-covid-19/covid-19-frequently-asked-questions)""")
+
+
+
+
 t1, t2 = st.columns(2)
-with t1:
-    st.markdown('# COVID-19 Utility Data Dashboard')
+#with t1:
+    #st.markdown('# COVID-19 Utility Data Dashboard')
 
 with t2:
     st.write("")
@@ -170,24 +207,7 @@ with t2:
     **Built by Arian Kharazmi**
     """)
 
-# Streamlit Sidebar Description Info
-with st.sidebar.expander("Click here to learn more about the COVID-19 Utility (Web-Application)"):
-    st.markdown(f"""
-    The COVID-19 Utility Web Application was developed to track and monitor data regarding the Coronavirus Pandemic to better understand the data surrounding it, in an easy-to-use, friendly manner.
-    
-    COVID Data traced from:
-    [COVID-19 Data Repository](https://github.com/CSSEGISandData/COVID-19)[*Johns Hopkins University*]
-    https://covidactnow.org/[*COVIDActNow Org*]  
-    
-    *Utility last updated on {str(today)}.*  
-    """)
 
-st.write("""
-Quick Web Links
-
-**This is an early version of the program, please do not take COVID data presented here as an accurate reflection.**
-***
-""")
 
 # Stat Sorter
 if _ENABLE_PROFILING:
