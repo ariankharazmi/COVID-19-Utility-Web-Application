@@ -1,5 +1,4 @@
 import time
-
 import requests
 #from bs4 import BeautifulSoup as soup
 from urllib.request import Request, urlopen
@@ -63,16 +62,26 @@ This webpage uses COVID Data API to gather accurate data and present it in one p
 
 sidebar_selection = st.sidebar.radio(
     'Select data:',
-    ['Select State', 'Select County', 'U.S National Data'],
+    ['Select All', 'Select State', 'Select County', 'U.S National Data'],
 )
-
-
 
 st.header('Enter corresponding information into your console/terminal')
 
 st.subheader('COVID Data for State and County:')
 selected_state = st.sidebar.selectbox('State', dict())
 selected_county = st.sidebar.selectbox('County', dict())
+
+#selectbox_options = [us_state_to_abbrev] and [us_state_county]
+#selectbox_
+
+
+
+
+
+
+
+
+#selected_county = st.sidebar.selectbox('Country', dict())
 
 #st.dataframe(df_selected_sector)
 #df = load_data()
@@ -81,21 +90,36 @@ selected_county = st.sidebar.selectbox('County', dict())
 #sorted_sector_unique = sorted( df['Total U.S COVID Recovered Cases']).unique()
 #selected_sector = st.sidebar.multiselect('Sector', sorted_sector_unique)
 
+# Streamlit Webpage Text Entry
+#state_input = st.text_input("Enter your state")
+#county_input = st.text_input("Enter your state's county")
 
 
 ##State COVID Data **needs fixing**
 state_url = "https://api.covidactnow.org/v2/states.json?apiKey=c4edd54144b943c68a637a1b64194c0c"
 response = requests.get(state_url)
 data = response.json()
+states = [x["state"] for x in data]
+cases = [x["actuals"]["cases"] for x in data]
+deaths = [x["actuals"]["deaths"] for x in data]
+
+
 
 ##County-level COVID Data **needs fixing**
 county_url = "https://api.covidactnow.org/v2/counties.json?apiKey=c4edd54144b943c68a637a1b64194c0c"
 response = requests.get(county_url)
 data = response.json()
-states = [x["state"] for x in data]
+counties = [x["county"] for x in data]
 cases = [x["actuals"]["cases"] for x in data]
-##deaths = [x["actuals"]["deaths"] for x in data]
+deaths = [x["actuals"]["deaths"] for x in data]
 
+print(cases)
+print(deaths)
+
+
+#counties = [x["county"] for x in data]
+#cases = [x["actuals"]["cases"] for x in data]
+#print(cases)
 
 def get_data():
     US_confirmed = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv'
@@ -111,13 +135,15 @@ FIPSs['FIPS'].fillna(0, inplace = True)
 FIPSs['FIPS'] = FIPSs.FIPS.astype(int).astype(str).str.zfill(5)
 
 
-counties = [x["county"] for x in data]
-cases = [x["actuals"]["cases"] for x in data]
-print(cases)
+#counties = [x["county"] for x in data]
+#cases = [x["actuals"]["cases"] for x in data]
+#print(cases)
 
 dictionary_1 = dict(zip(states, cases))
 dictionary_2 = dict(zip(counties, cases))
-##dictionary = dict(zip(states, deaths))
+dictionary_3 = dict(zip(states, deaths))
+dictionary_4 = dict(zip(counties, deaths))
+
 
 
 ## U.S State Input
@@ -150,14 +176,20 @@ while (inp == False):
     except:
         print("Try again")
 
-#mainline console print
-print("There are " + str(dictionary_1[state_key]) + " total confirmed COVID-19 cases in " + state)
-print("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 cases in " + county)
+
+#main console-terminal print
+print("There are " + str(dictionary_1[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to the [COVID Act Now API]")
+print("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to the [COVID Act Now API]")
+print("There are " + str(dictionary_3[state_key]) + " total COVID-19 cases in " + state + " according to the [COVID Act Now API]")
+print("There are " + str(dictionary_4[county_key]) + " total COVID-19 cases in " + county + " according to the [COVID Act Now API]")
 
 #streamlit webpage print
-st.write("There are " + str(dictionary_1[state_key]) + " total confirmed COVID-19 cases in " + state)
-st.write("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 cases in " + county)
-##print("There are " + str(dictionary[state_key]) + " total deaths in " + state)
+st.write("There are " + str(dictionary_1[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to the [COVID Act Now API](https://apidocs.covidactnow.org/)")
+st.write("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to the [COVID Act Now API](https://apidocs.covidactnow.org/)")
+st.write("There are " + str(dictionary_3[state_key]) + " total COVID-19 cases in " + state + " according to the [COVID Act Now API](https://apidocs.covidactnow.org/)")
+st.write("There are " + str(dictionary_4[county_key]) + " total COVID-19 cases in " + county + " according to the [COVID Act Now API](https://apidocs.covidactnow.org/)")
+
+
 
 
 # Streamlit Sidebar Description Info
@@ -168,7 +200,7 @@ with st.sidebar.expander("Click here to learn more about the COVID-19 Utility (W
     COVID Data traced from:
     [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19), [*COVIDActNow Org*](https://covidactnow.org/)
     
-    *Utility last updated on {str(today)}.*  
+    *Utility data last updated on {str(today)}.*  
     """)
 
 st.write("""
@@ -185,7 +217,7 @@ st.write("""
 st.write("""
 [**New York Times Coronavirus Statistics Website**](https://www.nytimes.com/interactive/2021/us/covid-cases.html)""")
 st.write("""
-[**Do I Have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html)""")
+[**Do I have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html)""")
 st.write("""
 [**What should I do if I have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/if-you-are-sick/steps-when-sick.html)""")
 st.write("""
