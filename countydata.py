@@ -203,7 +203,6 @@ us_state_county = {
         "name": "Fayette County",
         "state": "Alabama",
         "fips": "01057",
-        "population": 16148,
         "area": 627,
         "density": 26
     },
@@ -211,7 +210,6 @@ us_state_county = {
         "name": "Franklin County",
         "state": "Alabama",
         "fips": "01059",
-        "population": 32013,
         "area": 633,
         "density": 51
     },
@@ -219,7 +217,6 @@ us_state_county = {
         "name": "Geneva County",
         "state": "Alabama",
         "fips": "01061",
-        "population": 26701,
         "area": 574,
         "density": 47
     },
@@ -227,7 +224,6 @@ us_state_county = {
         "name": "Greene County",
         "state": "Alabama",
         "fips": "01063",
-        "population": 7629,
         "area": 647,
         "density": 12
     },
@@ -235,7 +231,6 @@ us_state_county = {
         "name": "Hale County",
         "state": "Alabama",
         "fips": "01065",
-        "population": 14754,
         "area": 643,
         "density": 23
     },
@@ -243,7 +238,6 @@ us_state_county = {
         "name": "Henry County",
         "state": "Alabama",
         "fips": "01067",
-        "population": 17459,
         "area": 561,
         "density": 31
     },
@@ -251,7 +245,6 @@ us_state_county = {
         "name": "Houston County",
         "state": "Alabama",
         "fips": "01069",
-        "population": 107458,
         "area": 579,
         "density": 186
     },
@@ -259,7 +252,6 @@ us_state_county = {
         "name": "Jackson County",
         "state": "Alabama",
         "fips": "01071",
-        "population": 52773,
         "area": 1077,
         "density": 49
     },
@@ -267,7 +259,6 @@ us_state_county = {
         "name": "Jefferson County",
         "state": "Alabama",
         "fips": "01073",
-        "population": 667820,
         "area": 1111,
         "density": 601
     },
@@ -275,7 +266,6 @@ us_state_county = {
         "name": "Lamar County",
         "state": "Alabama",
         "fips": "01075",
-        "population": 13689,
         "area": 604,
         "density": 23
     },
@@ -283,7 +273,6 @@ us_state_county = {
         "name": "Lauderdale County",
         "state": "Alabama",
         "fips": "01077",
-        "population": 94043,
         "area": 667,
         "density": 141
     },
@@ -291,7 +280,6 @@ us_state_county = {
         "name": "Lawrence County",
         "state": "Alabama",
         "fips": "01079",
-        "population": 33090,
         "area": 690,
         "density": 48
     },
@@ -299,7 +287,6 @@ us_state_county = {
         "name": "Lee County",
         "state": "Alabama",
         "fips": "01081",
-        "population": 177218,
         "area": 607,
         "density": 292
     },
@@ -307,7 +294,6 @@ us_state_county = {
         "name": "Limestone County",
         "state": "Alabama",
         "fips": "01083",
-        "population": 107517,
         "area": 559,
         "density": 192
     },
@@ -315,7 +301,6 @@ us_state_county = {
         "name": "Lowndes County",
         "state": "Alabama",
         "fips": "01085",
-        "population": 9965,
         "area": 715,
         "density": 14
     },
@@ -323,7 +308,6 @@ us_state_county = {
         "name": "Macon County",
         "state": "Alabama",
         "fips": "01087",
-        "population": 18895,
         "area": 608,
         "density": 31
     },
@@ -331,7 +315,6 @@ us_state_county = {
         "name": "Madison County",
         "state": "Alabama",
         "fips": "01089",
-        "population": 395211,
         "area": 801,
         "density": 493
     },
@@ -339,7 +322,6 @@ us_state_county = {
         "name": "Marengo County",
         "state": "Alabama",
         "fips": "01091",
-        "population": 18996,
         "area": 976,
         "density": 19
     },
@@ -347,7 +329,6 @@ us_state_county = {
         "name": "Marion County",
         "state": "Alabama",
         "fips": "01093",
-        "population": 29246,
         "area": 742,
         "density": 39
     },
@@ -355,7 +336,6 @@ us_state_county = {
         "name": "Marshall County",
         "state": "Alabama",
         "fips": "01095",
-        "population": 98228,
         "area": 565,
         "density": 174
     },
@@ -363,7 +343,6 @@ us_state_county = {
         "name": "Mobile County",
         "state": "Alabama",
         "fips": "01097",
-        "population": 413073,
         "area": 1229,
         "density": 336
     },
@@ -371,7 +350,6 @@ us_state_county = {
         "name": "Monroe County",
         "state": "Alabama",
         "fips": "01099",
-        "population": 19648,
         "area": 1025,
         "density": 19
     },
@@ -379,7 +357,6 @@ us_state_county = {
         "name": "Montgomery County",
         "state": "Alabama",
         "fips": "01101",
-        "population": 227434,
         "area": 784,
         "density": 290
     },
@@ -387,7 +364,6 @@ us_state_county = {
         "name": "Morgan County",
         "state": "Alabama",
         "fips": "01103",
-        "population": 123668,
         "area": 579,
         "density": 214
     },
@@ -395,7 +371,6 @@ us_state_county = {
         "name": "Perry County",
         "state": "Alabama",
         "fips": "01105",
-        "population": 8355,
         "area": 719,
         "density": 12
     },
@@ -403,7 +378,6 @@ us_state_county = {
         "name": "Pickens County",
         "state": "Alabama",
         "fips": "01107",
-        "population": 18801,
         "area": 881,
         "density": 21
     },
@@ -411,7 +385,6 @@ us_state_county = {
         "name": "Pike County",
         "state": "Alabama",
         "fips": "01109",
-        "population": 32991,
         "area": 672,
         "density": 49
     },
@@ -419,7 +392,6 @@ us_state_county = {
         "name": "Randolph County",
         "state": "Alabama",
         "fips": "01111",
-        "population": 21989,
         "area": 580,
         "density": 38
     },
@@ -427,7 +399,6 @@ us_state_county = {
         "name": "Russell County",
         "state": "Alabama",
         "fips": "01113",
-        "population": 58722,
         "area": 641,
         "density": 92
     },
@@ -435,7 +406,6 @@ us_state_county = {
         "name": "St. Clair County",
         "state": "Alabama",
         "fips": "01115",
-        "population": 92748,
         "area": 631,
         "density": 147
     },
@@ -443,7 +413,6 @@ us_state_county = {
         "name": "Shelby County",
         "state": "Alabama",
         "fips": "01117",
-        "population": 226902,
         "area": 784,
         "density": 289
     },
@@ -451,7 +420,6 @@ us_state_county = {
         "name": "Sumter County",
         "state": "Alabama",
         "fips": "01119",
-        "population": 12164,
         "area": 903,
         "density": 13
     },
@@ -459,7 +427,6 @@ us_state_county = {
         "name": "Talladega County",
         "state": "Alabama",
         "fips": "01121",
-        "population": 81524,
         "area": 736,
         "density": 111
     },
@@ -467,7 +434,6 @@ us_state_county = {
         "name": "Tallapoosa County",
         "state": "Alabama",
         "fips": "01123",
-        "population": 41023,
         "area": 716,
         "density": 57
     },
@@ -475,7 +441,6 @@ us_state_county = {
         "name": "Tuscaloosa County",
         "state": "Alabama",
         "fips": "01125",
-        "population": 227007,
         "area": 1321,
         "density": 172
     },
@@ -483,7 +448,6 @@ us_state_county = {
         "name": "Walker County",
         "state": "Alabama",
         "fips": "01127",
-        "population": 64818,
         "area": 791,
         "density": 82
     },
@@ -491,7 +455,6 @@ us_state_county = {
         "name": "Washington County",
         "state": "Alabama",
         "fips": "01129",
-        "population": 15147,
         "area": 1080,
         "density": 14
     },
@@ -499,7 +462,6 @@ us_state_county = {
         "name": "Wilcox County",
         "state": "Alabama",
         "fips": "01131",
-        "population": 10446,
         "area": 888,
         "density": 12
     },
@@ -507,7 +469,6 @@ us_state_county = {
         "name": "Winston County",
         "state": "Alabama",
         "fips": "01133",
-        "population": 23652,
         "area": 612,
         "density": 39
     },
@@ -515,7 +476,6 @@ us_state_county = {
         "name": "Aleutians East Borough",
         "state": "Alaska",
         "fips": "02013",
-        "population": 3398,
         "area": 6985,
         "density": 0
     },
@@ -523,7 +483,6 @@ us_state_county = {
         "name": "Anchorage",
         "state": "Alaska",
         "fips": "02020",
-        "population": 288121,
         "area": 1707,
         "density": 169
     },
@@ -531,7 +490,6 @@ us_state_county = {
         "name": "Bristol Bay Borough",
         "state": "Alaska",
         "fips": "02060",
-        "population": 838,
         "area": 482,
         "density": 2
     },
@@ -539,7 +497,6 @@ us_state_county = {
         "name": "Denali Borough",
         "state": "Alaska",
         "fips": "02068",
-        "population": 1593,
         "area": 12641,
         "density": 0
     },
@@ -547,7 +504,6 @@ us_state_county = {
         "name": "Fairbanks North Star Borough",
         "state": "Alaska",
         "fips": "02090",
-        "population": 95593,
         "area": 7335,
         "density": 13
     },
@@ -555,7 +511,6 @@ us_state_county = {
         "name": "Haines Borough",
         "state": "Alaska",
         "fips": "02100",
-        "population": 2071,
         "area": 2343,
         "density": 1
     },
@@ -563,7 +518,6 @@ us_state_county = {
         "name": "Juneau",
         "state": "Alaska",
         "fips": "02110",
-        "population": 31973,
         "area": 2704,
         "density": 12
     },
@@ -571,7 +525,6 @@ us_state_county = {
         "name": "Kenai Peninsula Borough",
         "state": "Alaska",
         "fips": "02122",
-        "population": 59767,
         "area": 16017,
         "density": 4
     },
@@ -579,7 +532,6 @@ us_state_county = {
         "name": "Ketchikan Gateway Borough",
         "state": "Alaska",
         "fips": "02130",
-        "population": 13754,
         "area": 4857,
         "density": 3
     },
@@ -587,7 +539,6 @@ us_state_county = {
         "name": "Kodiak Island Borough",
         "state": "Alaska",
         "fips": "02150",
-        "population": 12787,
         "area": 6689,
         "density": 2
     },
@@ -595,7 +546,6 @@ us_state_county = {
         "name": "Lake and Peninsula Borough",
         "state": "Alaska",
         "fips": "02164",
-        "population": 1416,
         "area": 23832,
         "density": 0
     },
@@ -603,7 +553,6 @@ us_state_county = {
         "name": "Matanuska-Susitna Borough",
         "state": "Alaska",
         "fips": "02170",
-        "population": 110686,
         "area": 24707,
         "density": 4
     },
@@ -611,7 +560,6 @@ us_state_county = {
         "name": "North Slope Borough",
         "state": "Alaska",
         "fips": "02185",
-        "population": 10972,
         "area": 88824,
         "density": 0
     },
@@ -619,7 +567,6 @@ us_state_county = {
         "name": "Northwest Arctic Borough",
         "state": "Alaska",
         "fips": "02188",
-        "population": 7560,
         "area": 35663,
         "density": 0
     },
@@ -627,7 +574,6 @@ us_state_county = {
         "name": "Petersburg Borough",
         "state": "Alaska",
         "fips": "02195",
-        "population": 3356,
         "area": 2901,
         "density": 1
     },
@@ -635,7 +581,6 @@ us_state_county = {
         "name": "Sitka",
         "state": "Alaska",
         "fips": "02220",
-        "population": 8407,
         "area": 2870,
         "density": 3
     },
@@ -643,7 +588,6 @@ us_state_county = {
         "name": "Skagway",
         "state": "Alaska",
         "fips": "02230",
-        "population": 1132,
         "area": 434,
         "density": 3
     },
@@ -651,7 +595,6 @@ us_state_county = {
         "name": "Unorganized Borough",
         "state": "Alaska",
         "fips": "02-",
-        "population": 76490,
         "area": 319852,
         "density": 0
     },
@@ -659,7 +602,6 @@ us_state_county = {
         "name": "Wrangell",
         "state": "Alaska",
         "fips": "02275",
-        "population": 2055,
         "area": 2556,
         "density": 1
     },
@@ -667,7 +609,6 @@ us_state_county = {
         "name": "Yakutat",
         "state": "Alaska",
         "fips": "02282",
-        "population": 704,
         "area": 7623,
         "density": 0
     },
@@ -675,7 +616,6 @@ us_state_county = {
         "name": "Apache County",
         "state": "Arizona",
         "fips": "04001",
-        "population": 65623,
         "area": 11218,
         "density": 6
     },
@@ -683,7 +623,6 @@ us_state_county = {
         "name": "Cochise County",
         "state": "Arizona",
         "fips": "04003",
-        "population": 126050,
         "area": 6219,
         "density": 20
     },
@@ -691,7 +630,6 @@ us_state_county = {
         "name": "Coconino County",
         "state": "Arizona",
         "fips": "04005",
-        "population": 145052,
         "area": 18661,
         "density": 8
     },
@@ -699,7 +637,6 @@ us_state_county = {
         "name": "Gila County",
         "state": "Arizona",
         "fips": "04007",
-        "population": 53589,
         "area": 4796,
         "density": 11
     },
@@ -707,7 +644,6 @@ us_state_county = {
         "name": "Graham County",
         "state": "Arizona",
         "fips": "04009",
-        "population": 39050,
         "area": 4641,
         "density": 8
     },
@@ -715,7 +651,6 @@ us_state_county = {
         "name": "Greenlee County",
         "state": "Arizona",
         "fips": "04011",
-        "population": 9404,
         "area": 1848,
         "density": 5
     },
@@ -723,7 +658,6 @@ us_state_county = {
         "name": "La Paz County",
         "state": "Arizona",
         "fips": "04012",
-        "population": 16408,
         "area": 4513,
         "density": 4
     },
@@ -731,7 +665,6 @@ us_state_county = {
         "name": "Maricopa County",
         "state": "Arizona",
         "fips": "04013",
-        "population": 4496588,
         "area": 9224,
         "density": 487
     },
