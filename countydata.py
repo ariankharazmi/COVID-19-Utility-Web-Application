@@ -1,4 +1,11 @@
 
+## Identify with dict(), matched with input to fetch data
+
+## Removing the state after the initial county name allows for the county input to be accessed without
+## typing in the county name and the state name into the same second input.
+
+## Considering removing states from the county name line in the countydata.py file.
+
 
 
 ## US State County Data
@@ -672,7 +679,6 @@ us_state_county = {
         "name": "Mohave County",
         "state": "Arizona",
         "fips": "04015",
-        "population": 217692,
         "area": 13470,
         "density": 16
     },
@@ -680,7 +686,6 @@ us_state_county = {
         "name": "Navajo County",
         "state": "Arizona",
         "fips": "04017",
-        "population": 108147,
         "area": 9959,
         "density": 11
     },
@@ -688,7 +693,6 @@ us_state_county = {
         "name": "Pima County",
         "state": "Arizona",
         "fips": "04019",
-        "population": 1052030,
         "area": 9189,
         "density": 114
     },
@@ -696,7 +700,6 @@ us_state_county = {
         "name": "Pinal County",
         "state": "Arizona",
         "fips": "04021",
-        "population": 449557,
         "area": 5374,
         "density": 84
     },
@@ -704,7 +707,6 @@ us_state_county = {
         "name": "Santa Cruz County",
         "state": "Arizona",
         "fips": "04023",
-        "population": 47883,
         "area": 1238,
         "density": 39
     },
@@ -712,7 +714,6 @@ us_state_county = {
         "name": "Yavapai County",
         "state": "Arizona",
         "fips": "04025",
-        "population": 242253,
         "area": 8128,
         "density": 30
     },
@@ -720,7 +721,6 @@ us_state_county = {
         "name": "Yuma County",
         "state": "Arizona",
         "fips": "04027",
-        "population": 206990,
         "area": 5519,
         "density": 38
     },
@@ -728,7 +728,6 @@ us_state_county = {
         "name": "Arkansas County",
         "state": "Arkansas",
         "fips": "05001",
-        "population": 16722,
         "area": 1033,
         "density": 16
     },
@@ -736,7 +735,6 @@ us_state_county = {
         "name": "Ashley County",
         "state": "Arkansas",
         "fips": "05003",
-        "population": 18674,
         "area": 939,
         "density": 20
     },
@@ -744,7 +742,6 @@ us_state_county = {
         "name": "Baxter County",
         "state": "Arkansas",
         "fips": "05005",
-        "population": 42144,
         "area": 586,
         "density": 72
     },
@@ -752,7 +749,6 @@ us_state_county = {
         "name": "Benton County",
         "state": "Arkansas",
         "fips": "05007",
-        "population": 293692,
         "area": 884,
         "density": 332
     },
@@ -760,7 +756,6 @@ us_state_county = {
         "name": "Boone County",
         "state": "Arkansas",
         "fips": "05009",
-        "population": 37830,
         "area": 601,
         "density": 63
     },
@@ -768,7 +763,6 @@ us_state_county = {
         "name": "Bradley County",
         "state": "Arkansas",
         "fips": "05011",
-        "population": 10408,
         "area": 654,
         "density": 16
     },
@@ -776,7 +770,6 @@ us_state_county = {
         "name": "Calhoun County",
         "state": "Arkansas",
         "fips": "05013",
-        "population": 4741,
         "area": 632,
         "density": 8
     },
@@ -784,7 +777,6 @@ us_state_county = {
         "name": "Carroll County",
         "state": "Arkansas",
         "fips": "05015",
-        "population": 28435,
         "area": 638,
         "density": 45
     },
@@ -792,7 +784,6 @@ us_state_county = {
         "name": "Chicot County",
         "state": "Arkansas",
         "fips": "05017",
-        "population": 10019,
         "area": 690,
         "density": 15
     },
@@ -800,7 +791,6 @@ us_state_county = {
         "name": "Clark County",
         "state": "Arkansas",
         "fips": "05019",
-        "population": 21321,
         "area": 882,
         "density": 24
     },
@@ -808,7 +798,6 @@ us_state_county = {
         "name": "Clay County",
         "state": "Arkansas",
         "fips": "05021",
-        "population": 14350,
         "area": 641,
         "density": 22
     },
@@ -816,7 +805,6 @@ us_state_county = {
         "name": "Cleburne County",
         "state": "Arkansas",
         "fips": "05023",
-        "population": 25015,
         "area": 591,
         "density": 42
     },
@@ -16416,7 +16404,6 @@ us_state_county = {
         "name": "Hamilton County",
         "state": "Ohio",
         "fips": "39061",
-        "population": 826139,
         "area": 407,
         "density": 2030
     },
