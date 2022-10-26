@@ -1,9 +1,8 @@
 import time
 import requests
-#from bs4 import BeautifulSoup as soup
+from bs4 import BeautifulSoup as soup
 from urllib.request import Request, urlopen
 from altair.examples.pyramid import df
-from bs4 import BeautifulSoup as soup
 import numpy as np
 import streamlit as st
 import base64
@@ -27,6 +26,7 @@ mpl.use("agg")
 
 from statedata import us_state_to_abbrev
 from countydata import us_state_county
+
 
 
 style.use('fivethirtyeight')
@@ -136,10 +136,10 @@ def get_data():
     US_confirmed = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv'
     US_deaths = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv'
     confirmed = pd.read_csv(US_confirmed)
-    deaths = pd.read_csv(US_deaths)
-    return confirmed, deaths
+    usdeaths = pd.read_csv(US_deaths)
+    return confirmed, usdeaths
 
-confirmed, deaths = get_data()
+confirmed, usdeaths = get_data()
 FIPSs = confirmed.groupby(['Province_State', 'Admin2']).FIPS.unique().apply(pd.Series).reset_index()
 FIPSs.columns = ['State', 'County', 'FIPS']
 FIPSs['FIPS'].fillna(0, inplace = True)
@@ -152,7 +152,10 @@ dictionary_2 = dict(zip(counties, cases))
 dictionary_3 = dict(zip(states, deaths))
 dictionary_4 = dict(zip(counties, deaths))
 
-
+dictionary_5 = dict(zip(states, confirmed))
+dictionary_6 = dict(zip(counties, confirmed))
+dictionary_7 = dict(zip(states, usdeaths))
+dictionary_8 = dict(zip(counties, usdeaths))
 
 ## U.S State Input
 inp = False
@@ -191,12 +194,26 @@ print("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 
 print("There are " + str(dictionary_3[state_key]) + " total COVID-19 cases in " + state + " according to the [COVID Act Now API]")
 print("There are " + str(dictionary_4[county_key]) + " total COVID-19 cases in " + county + " according to the [COVID Act Now API]")
 
+
+
+print("There are " + str(dictionary_5[state_key]) + " total confirmed COVID-19 cases in " + state + " according to [Johns Hopkins University]")
+print("There are " + str(dictionary_6[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to [Johns Hopkins University]")
+print("There are " + str(dictionary_7[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [Johns Hopkins University]")
+print("There are " + str(dictionary_8[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to [Johns Hopkins University]")
+
+
+
+
 #streamlit webpage print
 st.write("There are " + str(dictionary_1[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to the [COVID Act Now API](https://apidocs.covidactnow.org/)")
 st.write("There are " + str(dictionary_2[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to the [COVID Act Now API](https://apidocs.covidactnow.org/)")
 st.write("There are " + str(dictionary_3[state_key]) + " total COVID-19 cases in " + state + " according to the [COVID Act Now API](https://apidocs.covidactnow.org/)")
 st.write("There are " + str(dictionary_4[county_key]) + " total COVID-19 cases in " + county + " according to the [COVID Act Now API](https://apidocs.covidactnow.org/)")
 
+st.write("There are " + str(dictionary_5[state_key]) + " total confirmed COVID-19 cases in " + state + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
+st.write("There are " + str(dictionary_6[county_key]) + " total confirmed COVID-19 cases in " + county + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
+st.write("There are " + str(dictionary_7[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
+st.write("There are " + str(dictionary_8[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
 
 _lock = RendererAgg.lock
 fig = Figure(figsize=(12, 8))

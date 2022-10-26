@@ -1,6 +1,8 @@
 
 
-## Identify with dict()
+## Identify with dict(), matched with input to fetch data
+
+
 #US State Data and Abbreviations
 us_state_to_abbrev = {
     "Alabama": "AL",
