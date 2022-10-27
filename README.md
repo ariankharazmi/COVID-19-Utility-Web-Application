@@ -6,7 +6,6 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 
 
-# COVID-19-Utility-Web-Application (v1.3.3)(Beta) Proof of Concept Images:
-![Screenshot 2022-10-18 155710](https://user-images.githubusercontent.com/100003892/196531320-325f13ec-f1ee-4efe-b91b-e5b54149ed5d.png)
-
-
+# COVID-19-Utility-Web-Application v1.3.5 (Beta) Proof of Concept Images:
+![Screenshot 2022-10-27 160424](https://user-images.githubusercontent.com/100003892/198387368-8c38dc5b-ece8-432b-b58f-97ce1d8b8233.png)
+![Screenshot 2022-10-27 160120](https://user-images.githubusercontent.com/100003892/198386869-5601e548-ad80-41c4-9b23-604689084660.png)
