@@ -1,5 +1,7 @@
 
-# defined by dict()
+
+## Identify with dict(), matched with input to fetch data
+#v1.3.6
 
 #US State Data and Abbreviations
 us_state_to_abbrev = {
@@ -60,4 +62,7 @@ us_state_to_abbrev = {
     "Puerto Rico": "PR",
     "United States Minor Outlying Islands": "UM",
     "U.S. Virgin Islands": "VI",
+}
+us_state_list = {
+    "Ohio"
 }
