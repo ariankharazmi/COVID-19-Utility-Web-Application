@@ -7,7 +7,7 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 ***There is no input method for the webpage's frontend...yet. Inputs will work through your IDE and console/terminal.***
 
-# Streamlit Webpage---> [COVID-19-Utility-Web-Application v1.4 (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
+# Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.4 (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
 
 
 
