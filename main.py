@@ -24,7 +24,8 @@ import json
 from urllib3.util import url
 mpl.use("agg")
 
-from statedata import us_state_to_abbrev, us_state_list
+from statedata import us_state_to_abbrev
+from statedata import us_state_list
 from countydata import us_state_county
 #from countrydata import country_list
 
@@ -61,7 +62,6 @@ today = date.today()
 #response = Request(url, headers = headers)
 
 
-
 #Streamlit Main Webpage Header and Info
 st.title('COVID-19 Utility Web Application')
 st.markdown("""
@@ -94,9 +94,6 @@ selected_state = st.sidebar.selectbox('State', dict())
 selected_county = st.sidebar.selectbox('County', dict())
 
 
-
-
-
 #selected_county = st.sidebar.selectbox('Country', dict())
 
 #st.dataframe(df_selected_sector)
@@ -121,7 +118,6 @@ cases = [x["actuals"]["cases"] for x in data]
 deaths = [x["actuals"]["deaths"] for x in data]
 
 
-
 ##County-level COVID Data **needs fixing**
 county_url = "https://api.covidactnow.org/v2/counties.json?apiKey=c4edd54144b943c68a637a1b64194c0c"
 response = requests.get(county_url)
@@ -136,7 +132,6 @@ print(deaths)
 #counties = [x["county"] for x in data]
 #cases = [x["actuals"]["cases"] for x in data]
 #print(cases)
-
 
 
 countries = [x["country"] for x in data]
@@ -199,7 +194,7 @@ dictionary_10 = dict(zip(states, statedeaths))
 dictionary_11 = dict(zip(counties, countydeaths))
 dictionary_12 = dict(zip(states, statecases))
 dictionary_13 = dict(zip(counties, countycases))
-#dictionary_12 = dict(zip(countries, )
+
 
 
 
@@ -215,6 +210,7 @@ while (inp == False):
         state = state.lower()
         state = state.title()
         state_key = us_state_to_abbrev[state]
+        state_key = us_state_list[state]
         print(state_key)
         inp = True
     except:
