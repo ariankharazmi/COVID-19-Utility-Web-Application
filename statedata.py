@@ -1,7 +1,7 @@
 
 
 ## Identify with dict(), matched with input to fetch data
-#v1.3.6
+#v1.4.1
 
 #US State Data and Abbreviations
 us_state_to_abbrev = {
@@ -64,5 +64,61 @@ us_state_to_abbrev = {
     "U.S. Virgin Islands": "VI",
 }
 us_state_list = {
-    "Ohio"
+    "Alabama": "Alabama",
+    "Alaska": "Alaska",
+    "Arizona": "Arizona",
+    "Arkansas": "Arkansas",
+    "California": "California",
+    "Colorado": "Colorado",
+    "Connecticut": "Connecticut",
+    "Delaware": "Delaware",
+    "Florida": "Florida",
+    "Georgia": "Georgia",
+    "Hawaii": "Hawaii",
+    "Idaho": "Idaho",
+    "Illinois": "Illinois",
+    "Indiana": "Indiana",
+    "Iowa": "Iowa",
+    "Kansas": "Kansas",
+    "Kentucky": "Kentucky",
+    "Louisiana": "Louisiana",
+    "Maine": "Maine",
+    "Maryland": "Maryland",
+    "Massachusetts": "Massachusetts",
+    "Michigan": "Michigan",
+    "Minnesota": "Minnesota",
+    "Mississippi": "Mississippi",
+    "Missouri": "Missouri",
+    "Montana": "Montana",
+    "Nebraska": "Nebraska",
+    "Nevada": "Nevada",
+    "New Hampshire": "New Hampshire",
+    "New Jersey": "New Jersey",
+    "New Mexico": "New Mexico",
+    "New York": "New York",
+    "North Carolina": "North Carolina",
+    "North Dakota": "North Dakota",
+    "Ohio": "Ohio",
+    "Oklahoma": "Oklahoma",
+    "Oregon": "Oregon",
+    "Pennsylvania": "Pennsylvania",
+    "Rhode Island": "Rhode Island",
+    "South Carolina": "South Carolina",
+    "South Dakota": "South Dakota",
+    "Tennessee": "Tennessee",
+    "Texas": "Texas",
+    "Utah": "Utah",
+    "Vermont": "Vermont",
+    "Virginia": "Virginia",
+    "Washington": "Washington",
+    "West Virginia": "West Virginia",
+    "Wisconsin": "Wisconsin",
+    "Wyoming": "Wyoming",
+    "District of Columbia": "District of Columbia",
+    "American Samoa": "American Samoa",
+    "Guam": "Guam",
+    "Northern Mariana Islands": "Northern Mariana Islands",
+    "Puerto Rico": "Puerto Rico",
+    "United States Minor Outlying Islands": "United States Minor Outlying Islands",
+    "U.S. Virgin Islands": "U.S Virgin Islands"
 }
