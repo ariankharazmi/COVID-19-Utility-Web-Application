@@ -6,7 +6,8 @@
 
 ## Considering removing states from the county name line in the countydata.py file.
 
-# v1.4.1
+
+# v1.4.2
 
 ## US State County Data
 us_state_county = {
@@ -16392,7 +16393,6 @@ us_state_county = {
         "area": 521,
         "density": 73
     },
-    #    "Hamilton County, Ohio": {
     "Hamilton County, Ohio": {
         "name": "Hamilton County",
         "state": "Ohio",
@@ -24588,7 +24588,6 @@ us_state_county = {
         "name": "Sheridan County",
         "state": "Wyoming",
         "fips": "56033",
-        "population": 31646,
         "area": 2523,
         "density": 13
     },
@@ -24596,7 +24595,6 @@ us_state_county = {
         "name": "Sublette County",
         "state": "Wyoming",
         "fips": "56035",
-        "population": 8697,
         "area": 4882,
         "density": 2
     },
@@ -24604,7 +24602,6 @@ us_state_county = {
         "name": "Sweetwater County",
         "state": "Wyoming",
         "fips": "56037",
-        "population": 41614,
         "area": 10426,
         "density": 4
     },
@@ -24612,7 +24609,6 @@ us_state_county = {
         "name": "Teton County",
         "state": "Wyoming",
         "fips": "56039",
-        "population": 23575,
         "area": 4008,
         "density": 6
     },
@@ -24620,7 +24616,6 @@ us_state_county = {
         "name": "Uinta County",
         "state": "Wyoming",
         "fips": "56041",
-        "population": 20635,
         "area": 2082,
         "density": 10
     },
@@ -24628,7 +24623,6 @@ us_state_county = {
         "name": "Washakie County",
         "state": "Wyoming",
         "fips": "56043",
-        "population": 7705,
         "area": 2240,
         "density": 3
     },
@@ -24636,7 +24630,6 @@ us_state_county = {
         "name": "Weston County",
         "state": "Wyoming",
         "fips": "56045",
-        "population": 6745,
         "area": 2398,
         "density": 3,
     }
