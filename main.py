@@ -26,6 +26,7 @@ mpl.use("agg")
 
 from statedata import us_state_to_abbrev
 from statedata import us_state_list
+from statedata import us_state_fip
 from countydata import us_state_county
 #from countrydata import country_list
 
@@ -152,6 +153,10 @@ FIPSs.columns = ['State', 'County', 'FIPS']
 FIPSs['FIPS'].fillna(0, inplace = True)
 FIPSs['FIPS'] = FIPSs.FIPS.astype(int).astype(str).str.zfill(5)
 
+
+STATEfips = us_state_fip(str("fips"))
+
+
 # New York Times COVID Data API
 def get_data():
     # U.S Death Data
@@ -189,7 +194,7 @@ dictionary_7 = dict(zip(states, usdeaths))
 dictionary_8 = dict(zip(counties, usdeaths))
 
 # New York Times COVID Data API Dict 9 - 13
-#dictionary_9 = dict(zip(countries, usadeaths))
+dictionary_9 = dict(STATEfips(states, statedeaths))
 dictionary_10 = dict(zip(states, statedeaths))
 dictionary_11 = dict(zip(counties, countydeaths))
 dictionary_12 = dict(zip(states, statecases))
@@ -211,6 +216,8 @@ while (inp == False):
         state = state.title()
         state_key = us_state_to_abbrev[state]
         state_key = us_state_list[state]
+        state_key = us_state_fip[state]
+        state_key = FIPSs
         print(state_key)
         inp = True
     except:
@@ -273,6 +280,7 @@ print("There are " + str(dictionary_6[county_key]) + " total confirmed COVID-19 
 print("There are " + str(dictionary_7[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [Johns Hopkins University]")
 print("There are " + str(dictionary_8[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to [Johns Hopkins University]")
 
+print("There are " + str(dictionary_9[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [NYT]")
 #New York Times Data print
 
 #print("There are " + str(dictionary_9[country_key]) + " total confirmed COVID-19 deaths in " + country + " according to [New York Times]")
@@ -294,6 +302,8 @@ st.write("There are " + str(dictionary_5[state_key]) + " total confirmed COVID-1
 st.write("There are " + str(dictionary_6[county_key]) + " total confirmed COVID-19 cases in " + county + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
 st.write("There are " + str(dictionary_7[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
 st.write("There are " + str(dictionary_8[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
+
+st.write("There are " + str(dictionary_9[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [NYT](https://github.com/CSSEGISandData/COVID-19)")
 
 # New York Times API
 #st.write("There are " + str(dictionary_9[country_key]) + " total confirmed COVID-19 deaths in " + country + " according to [New York Times]")
@@ -375,6 +385,8 @@ st.write("""
 [**What should I do if I have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/if-you-are-sick/steps-when-sick.html)""")
 st.write("""
 [**Where can I get masks, vaccines, and tests?**](https://www.covid.gov/)""")
+st.write("""
+[**Can I get a flu shot and a COVID-19 Vaccine at the same time?**](https://www.cdc.gov/flu/prevent/coadministration.htm)""")
 st.write("""
 [**COVID-19 Common Questions**](https://www.fda.gov/emergency-preparedness-and-response/coronavirus-disease-2019-covid-19/covid-19-frequently-asked-questions)""")
 
