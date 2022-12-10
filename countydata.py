@@ -7,7 +7,7 @@
 ## Considering removing states from the county name line in the countydata.py file.
 
 
-# v1.4.2
+# v1.4.3
 
 ## US State County Data
 us_state_county = {
@@ -11885,7 +11885,6 @@ us_state_county = {
         "name": "Cooper County",
         "state": "Missouri",
         "fips": "29053",
-        "population": 17115,
         "area": 565,
         "density": 30
     },
@@ -11893,7 +11892,6 @@ us_state_county = {
         "name": "Crawford County",
         "state": "Missouri",
         "fips": "29055",
-        "population": 22807,
         "area": 743,
         "density": 31
     },
@@ -11901,7 +11899,6 @@ us_state_county = {
         "name": "Dade County",
         "state": "Missouri",
         "fips": "29057",
-        "population": 7599,
         "area": 490,
         "density": 16
     },
@@ -11909,7 +11906,6 @@ us_state_county = {
         "name": "Dallas County",
         "state": "Missouri",
         "fips": "29059",
-        "population": 17341,
         "area": 542,
         "density": 32
     },
@@ -11917,7 +11913,6 @@ us_state_county = {
         "name": "Daviess County",
         "state": "Missouri",
         "fips": "29061",
-        "population": 8399,
         "area": 567,
         "density": 15
     },
@@ -11925,7 +11920,6 @@ us_state_county = {
         "name": "DeKalb County",
         "state": "Missouri",
         "fips": "29063",
-        "population": 11098,
         "area": 424,
         "density": 26
     },
@@ -11933,7 +11927,6 @@ us_state_county = {
         "name": "Dent County",
         "state": "Missouri",
         "fips": "29065",
-        "population": 14432,
         "area": 754,
         "density": 19
     },
