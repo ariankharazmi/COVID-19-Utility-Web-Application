@@ -28,7 +28,7 @@ from statedata import us_state_to_abbrev
 from statedata import us_state_list
 from statedata import us_state_fip
 from countydata import us_state_county
-#from countrydata import country_list
+from countrydata import country_list
 
 style.use('fivethirtyeight')
 plt.rcParams['lines.linewidth'] = 1
@@ -41,7 +41,7 @@ plt.rcParams['xtick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['figure.figsize'] = 6, 6
 
-
+apiKey = 'c4edd54144b943c68a637a1b64194c0c'
 
 _ENABLE_PROFILING = False
 
@@ -54,11 +54,12 @@ if _ENABLE_PROFILING:
 today = date.today()
 
 
-##URL for webscraping National U.S COVID Data
-#html_text = requests.get('https://www.worldometers.info/coronavirus/country/us/')
+# URL for webscraping **unused, might come back to fix this later**
+
+#html_text = requests.get('')
 #webpage = urlopen(response).read()
 #html = soup(webpage, "html.parser")
-#webscrapenum = soup.findall('li', class_ = '#maincounter-number')
+#webscrapenum = soup.findall('li', class_ = '')
 #headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'}
 #response = Request(url, headers = headers)
 
@@ -70,9 +71,9 @@ st.markdown("""
 
 
 st.write("""
-This webpage uses COVID-19 Data API to gather accurate data and present it in one place.
+This webpage uses COVID-19 Data from different API sources to gather accurate data and present it in one place.
 
-**This is an early version of the program, please do not take COVID data presented here as an accurate reflection.**
+**This is an early version of the program, please do not take COVID-19 data presented here as an accurate reflection.**
 ***
 """)
 
@@ -81,39 +82,31 @@ sidebar_selection = st.sidebar.radio(
     'Select location data to display:',
     ['Show All', 'Show State', 'Show County', 'Show U.S National'],
 )
-
 sidebar_selection = st.sidebar.radio(
     'Select which data source to display:',
     ['Show All Sources', 'Show COVIDActNow Data ', 'Show Johns Hopkins University Data', 'Show New York Times Data'],
 )
 
 
-st.header('Enter corresponding information into your console/terminal')
 
-st.subheader('COVID Data for State and County:')
+st.header('Please enter corresponding information into your console/terminal')
+
+st.subheader('COVID-19 Data for State and County:')
 selected_state = st.sidebar.selectbox('State', dict())
 selected_county = st.sidebar.selectbox('County', dict())
+selected_country = st.sidebar.selectbox('Country', dict())
 
-
-#selected_county = st.sidebar.selectbox('Country', dict())
-
-#st.dataframe(df_selected_sector)
-#df = load_data()
-#sorted_sector_unique = sorted( df['Total U.S COVID Cases']).unique()
-#sorted_sector_unique = sorted( df['Total U.S COVID Deaths']).unique()
-#sorted_sector_unique = sorted( df['Total U.S COVID Recovered Cases']).unique()
-#selected_sector = st.sidebar.multiselect('Sector', sorted_sector_unique)
 
 # Streamlit Webpage Text Entry
-#state_input = st.text_input("Enter your state")
-#county_input = st.text_input("Enter your state's county")
+state_input = st.text_input("Enter your state")
+county_input = st.text_input("Enter your state's county")
 
 
 ##State COVID Data **needs fixing**
 state_url = "https://api.covidactnow.org/v2/states.json?apiKey=c4edd54144b943c68a637a1b64194c0c"
 response = requests.get(state_url)
 data = response.json()
-#API_KEY = "c4edd54144b943c68a637a1b64194c0c"
+API_KEY = "c4edd54144b943c68a637a1b64194c0c"
 states = [x["state"] for x in data]
 cases = [x["actuals"]["cases"] for x in data]
 deaths = [x["actuals"]["deaths"] for x in data]
@@ -123,16 +116,13 @@ deaths = [x["actuals"]["deaths"] for x in data]
 county_url = "https://api.covidactnow.org/v2/counties.json?apiKey=c4edd54144b943c68a637a1b64194c0c"
 response = requests.get(county_url)
 data = response.json()
-#API_KEY = "c4edd54144b943c68a637a1b64194c0c"
+API_KEY = "c4edd54144b943c68a637a1b64194c0c"
 counties = [x["county"] for x in data]
 cases = [x["actuals"]["cases"] for x in data]
 deaths = [x["actuals"]["deaths"] for x in data]
 
 print(cases)
 print(deaths)
-#counties = [x["county"] for x in data]
-#cases = [x["actuals"]["cases"] for x in data]
-#print(cases)
 
 
 countries = [x["country"] for x in data]
@@ -148,14 +138,11 @@ def get_data():
     return confirmed, usdeaths
 confirmed, usdeaths = get_data()
 
+
 FIPSs = confirmed.groupby(['Province_State', 'Admin2']).FIPS.unique().apply(pd.Series).reset_index()
 FIPSs.columns = ['State', 'County', 'FIPS']
 FIPSs['FIPS'].fillna(0, inplace = True)
 FIPSs['FIPS'] = FIPSs.FIPS.astype(int).astype(str).str.zfill(5)
-
-
-STATEfips = us_state_fip(str("fips"))
-
 
 # New York Times COVID Data API
 def get_data():
@@ -181,6 +168,10 @@ def get_data():
     return usadeaths, usacases, statedeaths, statecases, countydeaths, countycases
 usadeaths, usacases, statedeaths, statecases, countydeaths, countycases = get_data()
 
+
+STATEfips = us_state_fip(dict("fips"))
+fips = STATEfips
+
 # CovidActNow API Dict 1-4
 dictionary_1 = dict(zip(states, cases))
 dictionary_2 = dict(zip(counties, cases))
@@ -194,15 +185,11 @@ dictionary_7 = dict(zip(states, usdeaths))
 dictionary_8 = dict(zip(counties, usdeaths))
 
 # New York Times COVID Data API Dict 9 - 13
-dictionary_9 = dict(STATEfips(states, statedeaths))
+dictionary_9 = dict(STATEfips(fips, statedeaths))
 dictionary_10 = dict(zip(states, statedeaths))
 dictionary_11 = dict(zip(counties, countydeaths))
 dictionary_12 = dict(zip(states, statecases))
 dictionary_13 = dict(zip(counties, countycases))
-
-
-
-
 
 
 ## U.S State Input
@@ -218,23 +205,11 @@ while (inp == False):
         state_key = us_state_list[state]
         state_key = us_state_fip[state]
         state_key = FIPSs
+        state_key = state_input
         print(state_key)
         inp = True
     except:
         print("Try again")
-
-#while (inp == False):
-    #try:
-        #state = input("Please enter a state: ")
-        #state = state.lower()
-        #state = state.title()
-        #state_key = us_state_list[state]
-        #print(state_key)
-        #inp = True
-    #except:
-        #print("Try again")
-
-
 
 
 ## US State County Input
@@ -247,23 +222,11 @@ while (inp == False):
         county = county.lower()
         county = county.title()
         county_key = us_state_county[county]["name"]
+        county_key = county_input
         print(county_key)
         inp = True
     except:
         print("Try again")
-
-
-#while (inp == False):
-    #try:
-        #country = input("Please enter a country: ")
-        #country = country.lower()
-        #country = country.title()
-        #country_key = [country_list][country]
-        #print(country_key)
-        #inp = True
-    #except:
-        #print("Try again")
-
 
 #main console-terminal print
 
@@ -280,6 +243,7 @@ print("There are " + str(dictionary_6[county_key]) + " total confirmed COVID-19 
 print("There are " + str(dictionary_7[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [Johns Hopkins University]")
 print("There are " + str(dictionary_8[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to [Johns Hopkins University]")
 
+#temporary line, to be removed later
 print("There are " + str(dictionary_9[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [NYT]")
 #New York Times Data print
 
@@ -361,7 +325,7 @@ with st.sidebar.expander("Click here to learn more about the COVID-19 Utility (W
     The COVID-19 Utility Web Application was developed to track and monitor data regarding the Coronavirus Pandemic to better understand the data surrounding it in an easy-to-use, friendly manner.
     
     COVID Data traced from:
-    [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19), [*COVIDActNow Org*](https://covidactnow.org/)
+    [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19), [*COVIDActNow Org*](https://covidactnow.org/), [New York Times](https://github.com/nytimes/covid-19-data)
     
     *COVID-19 Utility (WebApp) data last updated on {str(today)}.*  
     """)
