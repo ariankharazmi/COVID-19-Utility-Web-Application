@@ -3,13 +3,13 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 **This program is in its early stages, please do not take COVID data as accurate for the time being until the program has been properly updated to display that information as accurate.**
 
-*COVID-19-Utility-Web-Application v1.4 (Alpha) can run through your IDE (v1.4.3) or accessed via the Streamlit webpage. (v1.4)*
+*COVID-19-Utility-Web-Application v1.4 (Alpha) can run through your IDE (v1.4.3) or accessed via the Streamlit webpage. (v1.4*)*
 
-***There is no input method for the webpage's frontend...yet. Inputs will work through your IDE and console/terminal.***
+***There is no input method for the webpage's frontend...yet. User inputs will work through your IDE and console/terminal.***
 
 **The IDE-Console/Terminal will function as is, the Streamlit web-application is a bit unstable, proceed at your own discretion.**
 
-# Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.4 (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
+# Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.4* (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
 
 
 
