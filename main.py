@@ -51,7 +51,19 @@ if _ENABLE_PROFILING:
     pr = cProfile.Profile()
     pr.enable()
 
+ts = int(time.time())
 today = date.today()
+print(today)
+
+
+st.title('ContentCharts Web-Application')
+st.write("""You are visiting ContentCharts on: """)
+st.write(today)
+st.write("""COVID-19-Utility-Web-Application v1.4.3 (Alpha)
+A program that gathers Coronavirus (COVID-19) data and employs its statistics onto an easy-to-understand Streamlit webpage. 
+This is the first version, and is a work-in-progress, it will be further updated as more, major changes are made. 
+This was made to further familiarize myself with the Python language and the Streamlit service. 
+Being in an on-going pandemic, this tool will be useful to view COVID-19 data in an accessible manner for better understanding. """)
 
 
 # URL for webscraping **unused, might come back to fix this later**
