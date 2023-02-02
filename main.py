@@ -53,7 +53,7 @@ if _ENABLE_PROFILING:
 
 
 
-# URL for webscraping **unused, might come back to fix this later**
+# URL for webscraping -- unused come back to fix this later**
 
 #html_text = requests.get('')
 #webpage = urlopen(response).read()
@@ -73,13 +73,8 @@ today = date.today()
 print(today)
 
 
-st.write("""You are visiting the COVID-19-Utility (Web Application) on: """)
 st.write(today)
-st.write("""COVID-19-Utility-Web-Application v1.4.3 (Alpha)
-A program that gathers Coronavirus (COVID-19) data and employs its statistics onto an easy-to-understand Streamlit webpage. 
-This is the first version, and is a work-in-progress, it will be further updated as more, major changes are made. 
-This was made to further familiarize myself with the Python language and the Streamlit service. 
-Being in an on-going pandemic, this tool will be useful to view COVID-19 data in an accessible manner for better understanding. """)
+st.write(""" """)
 
 
 st.write("""
@@ -104,9 +99,9 @@ sidebar_selection = st.sidebar.radio(
 st.header('Please enter corresponding information into your console/terminal')
 
 st.subheader('COVID-19 Data for State and County:')
-selected_state = st.sidebar.selectbox('State', dict())
-selected_county = st.sidebar.selectbox('County', dict())
-selected_country = st.sidebar.selectbox('Country', dict())
+#selected_state = st.sidebar.selectbox('State', dict())
+#selected_county = st.sidebar.selectbox('County', dict())
+#selected_country = st.sidebar.selectbox('Country', dict())
 
 
 # Streamlit Webpage Text Entry
@@ -114,7 +109,7 @@ state_input = st.text_input("Enter your state")
 county_input = st.text_input("Enter your state's county")
 
 
-##State COVID Data **needs fixing**
+##State COVID Data **COVIDActNow API**
 state_url = "https://api.covidactnow.org/v2/states.json?apiKey=c4edd54144b943c68a637a1b64194c0c"
 response = requests.get(state_url)
 data = response.json()
@@ -124,7 +119,8 @@ cases = [x["actuals"]["cases"] for x in data]
 deaths = [x["actuals"]["deaths"] for x in data]
 
 
-##County-level COVID Data **needs fixing**
+
+##County-level COVID Data **COVIDActNow API**
 county_url = "https://api.covidactnow.org/v2/counties.json?apiKey=c4edd54144b943c68a637a1b64194c0c"
 response = requests.get(county_url)
 data = response.json()
@@ -133,22 +129,15 @@ counties = [x["county"] for x in data]
 cases = [x["actuals"]["cases"] for x in data]
 deaths = [x["actuals"]["deaths"] for x in data]
 
-print(cases)
-print(deaths)
-
-
-countries = [x["country"] for x in data]
-cases = [x["actuals"]["cases"] for x in data]
-deaths = [x["actuals"]["deaths"] for x in data]
 
 # Johns Hopkins COVID Data API
-def get_data():
+def get_jhu_data():
     US_confirmed = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv'
     US_deaths = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv'
     confirmed = pd.read_csv(US_confirmed)
     usdeaths = pd.read_csv(US_deaths)
     return confirmed, usdeaths
-confirmed, usdeaths = get_data()
+confirmed, usdeaths = get_jhu_data()
 
 
 FIPSs = confirmed.groupby(['Province_State', 'Admin2']).FIPS.unique().apply(pd.Series).reset_index()
@@ -157,7 +146,7 @@ FIPSs['FIPS'].fillna(0, inplace = True)
 FIPSs['FIPS'] = FIPSs.FIPS.astype(int).astype(str).str.zfill(5)
 
 # New York Times COVID Data API
-def get_data():
+def get_nyt_data():
     # U.S Death Data
     USA_deaths = 'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv'
     usadeaths = pd.read_csv(USA_deaths)
@@ -178,30 +167,32 @@ def get_data():
     countycases = pd.read_csv(County_cases)
 
     return usadeaths, usacases, statedeaths, statecases, countydeaths, countycases
-usadeaths, usacases, statedeaths, statecases, countydeaths, countycases = get_data()
+usadeaths, usacases, statedeaths, statecases, countydeaths, countycases = get_nyt_data()
 
 
-STATEfips = us_state_fip(dict("fips"))
-fips = STATEfips
+#STATEfips = us_state_fip("fips")
+#fips = STATEfips
+
+list = list(range(0,5))
 
 # CovidActNow API Dict 1-4
-dictionary_1 = dict(zip(states, cases))
-dictionary_2 = dict(zip(counties, cases))
-dictionary_3 = dict(zip(states, deaths))
-dictionary_4 = dict(zip(counties, deaths))
+dictionary_1 = json.loads(list(states, cases))
+dictionary_2 = json.loads(list(counties, cases))
+dictionary_3 = json.loads(list(states, deaths))
+dictionary_4 = json.loads(list(counties, deaths))
 
 # Johns Hopkins API Dict 5-8
-dictionary_5 = dict(zip(states, confirmed))
-dictionary_6 = dict(zip(counties, confirmed))
-dictionary_7 = dict(zip(states, usdeaths))
-dictionary_8 = dict(zip(counties, usdeaths))
+dictionary_5 = json.loads(list(states, confirmed))
+dictionary_6 = json.loads(list(counties, confirmed))
+dictionary_7 = json.loads(list(states, usdeaths))
+dictionary_8 = json.loads(list(counties, usdeaths))
 
 # New York Times COVID Data API Dict 9 - 13
-dictionary_9 = dict(STATEfips(fips, statedeaths))
-dictionary_10 = dict(zip(states, statedeaths))
-dictionary_11 = dict(zip(counties, countydeaths))
-dictionary_12 = dict(zip(states, statecases))
-dictionary_13 = dict(zip(counties, countycases))
+#dictionary_9 = json.loads(STATEfips(fips, statedeaths))
+dictionary_10 = json.loads(list(states, statedeaths))
+dictionary_11 = json.loads(list(counties, countydeaths))
+dictionary_12 = json.loads(list(states, statecases))
+dictionary_13 = json.loads(list(counties, countycases))
 
 
 ## U.S State Input
@@ -215,7 +206,7 @@ while (inp == False):
         state = state.title()
         state_key = us_state_to_abbrev[state]
         state_key = us_state_list[state]
-        state_key = us_state_fip[state]
+        #state_key = us_state_fip[state]
         state_key = FIPSs
         state_key = state_input
         print(state_key)
@@ -255,8 +246,8 @@ print("There are " + str(dictionary_6[county_key]) + " total confirmed COVID-19 
 print("There are " + str(dictionary_7[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [Johns Hopkins University]")
 print("There are " + str(dictionary_8[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to [Johns Hopkins University]")
 
-#temporary line, to be removed later
-print("There are " + str(dictionary_9[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [NYT]")
+#temporary NYT line, to be removed later
+#print("There are " + str(dictionary_9[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [NYT]")
 #New York Times Data print
 
 #print("There are " + str(dictionary_9[country_key]) + " total confirmed COVID-19 deaths in " + country + " according to [New York Times]")
@@ -279,7 +270,7 @@ st.write("There are " + str(dictionary_6[county_key]) + " total confirmed COVID-
 st.write("There are " + str(dictionary_7[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
 st.write("There are " + str(dictionary_8[county_key]) + " total confirmed COVID-19 deaths in " + county + " according to [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19)")
 
-st.write("There are " + str(dictionary_9[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [NYT](https://github.com/CSSEGISandData/COVID-19)")
+#st.write("There are " + str(dictionary_9[state_key]) + " total confirmed COVID-19 deaths in " + state + " according to [NYT](https://github.com/CSSEGISandData/COVID-19)")
 
 # New York Times API
 #st.write("There are " + str(dictionary_9[country_key]) + " total confirmed COVID-19 deaths in " + country + " according to [New York Times]")
@@ -394,3 +385,6 @@ if _ENABLE_PROFILING:
         f.write(s.getvalue())
 
 # end
+
+
+
