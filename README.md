@@ -6,6 +6,8 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 **This program is in its early stages, please do not take COVID-19 data as accurate for the time being until the program has been properly updated to display that information as accurate.**
 
+- **Streamlit is not yet available with this version, the localized client version of v1.5(C) will work through your IDE but currently there is no Web Application version of 1.5(C), v.1.4.5 is the current version hosted, but this will be updated to reflect the changes soon.**
+
 - **COVID-19-Utility-Web-Application v1.5(C) (Alpha) can run through your IDE (v1.5(C)) or accessed via the Streamlit webpage. (v1.4.5)**
 
 - ***There is no input method for the webpage's frontend...yet. User inputs will work through your IDE and console/terminal.***
