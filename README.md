@@ -14,11 +14,11 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 - **The IDE-Console/Terminal will function as is, the Streamlit web-application is a bit unstable, proceed at your own discretion.**
 
-# Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.5(C)* (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
+# Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.5.1(C)* (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
 
 
 
-# COVID-19-Utility-Web-Application v1.3.5 (Alpha) Proof of Concept Images:
+# COVID-19-Utility-Web-Application v1.3.5 (Alpha) Proof of Concept Images: (Will be replaced by images from newer updates soon!)
 - **First half of webpage**
 ![Screenshot 2022-10-27 160424](https://user-images.githubusercontent.com/100003892/198387368-8c38dc5b-ece8-432b-b58f-97ce1d8b8233.png)
 
