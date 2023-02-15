@@ -53,28 +53,15 @@ if _ENABLE_PROFILING:
 
 
 
-# URL for webscraping -- unused come back to fix this later**
-
-#html_text = requests.get('')
-#webpage = urlopen(response).read()
-#html = soup(webpage, "html.parser")
-#webscrapenum = soup.findall('li', class_ = '')
-#headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'}
-#response = Request(url, headers = headers)
-
-
 #Streamlit Main Webpage Header and Info
 st.title('COVID-19 Utility Web Application')
-st.markdown("""
-* **Data sources: COVID Data API(s):** [COVID-Act-Now.com](https://apidocs.covidactnow.org/), [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19), [New York Times](https://github.com/nytimes/covid-19-data)""")
-
 ts = int(time.time())
 today = date.today()
 print(today)
 
-
-st.write(today)
-st.write(""" """)
+st.write("""You are visiting on:    """ + str(today))
+st.markdown("""
+* **Data sources: COVID Data API(s):** [COVID-Act-Now.com](https://apidocs.covidactnow.org/), [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19), [New York Times](https://github.com/nytimes/covid-19-data)""")
 
 
 st.write("""
@@ -96,19 +83,24 @@ sidebar_selection = st.sidebar.radio(
 
 
 
-st.header('Please enter corresponding information into your console/terminal')
+st.header('Please enter corresponding information into your console-terminal')
 
-st.subheader('COVID-19 Data for State and County:')
-#selected_state = st.sidebar.selectbox('State', dict())
-#selected_county = st.sidebar.selectbox('County', dict())
-#selected_country = st.sidebar.selectbox('Country', dict())
+st.subheader('Display COVID-19 data based on user inputs')
+selected_state = st.sidebar.selectbox('State', dict())
+selected_county = st.sidebar.selectbox('County', dict())
+selected_country = st.sidebar.selectbox('Country', dict())
 
+dictionary_1 = country_list
+dictionary_2 = us_state_fip, us_state_list, us_state_to_abbrev
+dictionary_3 = us_state_county
 
 # Streamlit Webpage Text Entry
+country_input = st.text_input("Enter your country")
 state_input = st.text_input("Enter your state")
 county_input = st.text_input("Enter your state's county")
 
-# Worldometers Data
+# Worldometers API
+
 def get_dsh_data(location_country):
     url = f"https://disease.sh/v3/covid-19/countries/{location_country}"
 
@@ -126,6 +118,8 @@ def get_dsh_data(location_country):
 location = input("Enter the name of your country: ")
 print(get_dsh_data(location))
 st.write(get_dsh_data(location))
+
+
 
 def get_covid_data(location):
     url = f"https://disease.sh/v3/covid-19/states/{location}"
@@ -145,9 +139,9 @@ location = input("Enter the name of your state: ")
 print(get_covid_data(location))
 st.write(get_covid_data(location))
 
+# NYT API
 
-# NYT
-def get_covid_data(location):
+def get_nyt_data(location):
     url = f"https://disease.sh/v3/covid-19/nyt/counties?lastdays=all{location}"
 
     response = requests.get(url)
@@ -162,5 +156,9 @@ def get_covid_data(location):
         return "Unable to retrieve data"
 
 location = input("Enter the name of your county: ")
-print(get_covid_data(location))
-st.write(get_covid_data(location))
+print(get_nyt_data(location))
+st.write(get_nyt_data(location))
+
+# Other API(s) below
+
+
