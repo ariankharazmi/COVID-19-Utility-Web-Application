@@ -1,13 +1,6 @@
+# Working with new configs...
 
-## Identify with dict(), matched with input to fetch data
-
-## Removing the state after the initial county name allows for the county input to be accessed without
-## typing in the county name and the state name into the same second input.
-
-## Considering removing states from the county name line in the countydata.py file.
-
-
-# v1.5(C)
+# v1.5.2(C)
 
 ## US State County Data
 us_state_county = {
