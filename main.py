@@ -115,14 +115,14 @@ def get_dsh_data(location_country):
     else:
         return "Unable to retrieve data"
 
-location = input("Enter the name of your country: ")
-print(get_dsh_data(location))
-st.write(get_dsh_data(location))
+location_country = input("Enter the name of your country: ")
+print(get_dsh_data(location_country))
+st.write(get_dsh_data(location_country))
 
 
 
-def get_covid_data(location):
-    url = f"https://disease.sh/v3/covid-19/states/{location}"
+def get_covid_data(location_state):
+    url = f"https://disease.sh/v3/covid-19/states/{location_state}"
 
     response = requests.get(url)
     if response.status_code == 200:
@@ -131,18 +131,38 @@ def get_covid_data(location):
         confirmed_cases = data["cases"]
         deaths = data["deaths"]
         recovered = data["recovered"]
-        return f"Confirmed cases in {location}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
+        return f"Confirmed cases in {location_state}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
     else:
         return "Unable to retrieve data"
 
-location = input("Enter the name of your state: ")
-print(get_covid_data(location))
-st.write(get_covid_data(location))
+location_state = input("Enter the name of your state: ")
+print(get_covid_data(location_state))
+st.write(get_covid_data(location_state))
 
 # NYT API
 
-def get_nyt_data(location):
-    url = f"https://disease.sh/v3/covid-19/nyt/counties?lastdays=all{location}"
+#def get_nyt_data(location):
+    #url = f"https://disease.sh/v3/covid-19/nyt/counties?lastdays=all{location}"
+
+    #response = requests.get(url)
+    #if response.status_code == 200:
+        #data = response.json()
+        # parse the data to get the desired information
+        #confirmed_cases = data["cases"]
+        #deaths = data["deaths"]
+        #recovered = data["recovered"]
+        #return f"Confirmed cases in {location}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
+    #else:
+        #return "Unable to retrieve data for county"
+
+#location = input("Enter the name of your county: ")
+#print(get_nyt_data(location))
+#st.write(get_nyt_data(location))
+
+# Other API(s) below
+
+def get_cdc_data(location_county):
+    url = f"https://data.cdc.gov/resource/3nnm-4jni.json{location_county}"
 
     response = requests.get(url)
     if response.status_code == 200:
@@ -151,14 +171,10 @@ def get_nyt_data(location):
         confirmed_cases = data["cases"]
         deaths = data["deaths"]
         recovered = data["recovered"]
-        return f"Confirmed cases in {location}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
+        return f"Confirmed cases in {location_county}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
     else:
         return "Unable to retrieve data"
 
-location = input("Enter the name of your county: ")
-print(get_nyt_data(location))
-st.write(get_nyt_data(location))
-
-# Other API(s) below
-
-
+location_county = input("Enter the name of your county: ")
+print(get_cdc_data(location_county))
+st.write(get_cdc_data(location_county))
