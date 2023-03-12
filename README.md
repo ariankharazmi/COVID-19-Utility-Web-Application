@@ -18,7 +18,7 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 
 
-#Proof of Concept Images: (Coming Soon!)
+# Proof of Concept Images: (Coming Soon!)
 - **First half of webpage**
 
 
