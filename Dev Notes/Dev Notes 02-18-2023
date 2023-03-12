@@ -1,0 +1,4 @@
+**Developer note**
+After three long years since the Coronavirus Pandemic started, Johns Hopkins University has made the decision to 
+stop updating their COVID-19 Data tracker, made at a time when there was no easy way to visualize the data, now there are a multitude of tools, the crisis has winded down
+and the CDC has a comprehensive visual tracker of its own. I will no longer use the JHU COVID API in this project, as their data will only be historical (Starting March 10th, 2023) I will instead stick with the other data APIs to gather present-date Coronavirus data.
