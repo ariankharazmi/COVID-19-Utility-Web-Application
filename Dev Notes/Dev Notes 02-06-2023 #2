@@ -1,0 +1,10 @@
+**Developer note**
+I have been working for months to configure API --> dict() ---> accurate COVID location data, and each patch sent out did not address the fundamental issue
+that having more API sources brought.  I have essentially hit the development wall regarding this issue for a while. 
+
+A few nights ago I stumbled across an organization that had created an API middleman for COVID API sources, with the dict() ---> accurate COVID location data.
+This organization's middleman API fixes the API config --> accurate COVID location data issue, do I need to still work on the config?
+
+Version 1.5(C) (C = Configured) brings a new version of the COVID-19-Utility (Web Version). This version has stripped out much of the old code for the older self-built configuration and instead swaps in the Disease.sh API middleman for easy access to the same API sources & data as before but with less errors! (and code)
+
+I have not yet determined yet if I will continue to move forward with the (C) version with the Disease.SH API, but I wanted to push this out as a potential new way forward for this program, a different path to ultimately reaching the program's end goal. 
