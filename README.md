@@ -19,8 +19,8 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 
 # Proof of Concept Images: v1.6 (Alpha)
-* # Web View
-![image](https://user-images.githubusercontent.com/100003892/226227485-20907d21-83f2-4143-a889-a133700afba3.png)
+* ## Web View
+### ![image](https://user-images.githubusercontent.com/100003892/226227485-20907d21-83f2-4143-a889-a133700afba3.png)
 
 
 
