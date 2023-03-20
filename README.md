@@ -8,7 +8,7 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 - **Streamlit is NOW available with the latest version.**
 
-- **COVID-19-Utility-Web-Application v1.6 (Alpha) can run through your IDE or accessed via the Streamlit webpage.**
+- **COVID-19-Utility-Web-Application v1.6 (Alpha) can run (localized) through your IDE or accessed via the Streamlit webpage.**
 
 - **There is now an input method for the webpage's frontend! User inputs will work through the boxes on the webpage.**
 
