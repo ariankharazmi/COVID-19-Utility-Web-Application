@@ -1,4 +1,4 @@
-# COVID-19-Utility-Web-Application v1.5.2(C) (Alpha) 
+# COVID-19-Utility-Web-Application v1.6 (Alpha) 
 A program that gathers Coronavirus (COVID-19) data and employs its statistics onto an easy-to-understand Streamlit webpage. This is the first version, and is a work-in-progress, it will be further updated as more, major changes are made. This was made to further familiarize myself with the Python language and the Streamlit service. Being in an on-going pandemic, this tool will be useful to view COVID-19 data in an accessible manner for better understanding. 
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ariankharazmi/COVID-19-Utility-Web-Application) ![GitHub last commit](https://img.shields.io/github/last-commit/ariankharazmi/COVID-19-Utility-Web-Application) ![GitHub Release Date](https://img.shields.io/github/release-date/ariankharazmi/covid-19-utility-web-application) ![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/ariankharazmi/covid-19-utility-web-application)
@@ -8,17 +8,17 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 - **Streamlit is NOW available with the latest version.**
 
-- **COVID-19-Utility-Web-Application v1.5.2(C) (Alpha) can run through your IDE or accessed via the Streamlit webpage.**
+- **COVID-19-Utility-Web-Application v1.6 (Alpha) can run through your IDE or accessed via the Streamlit webpage.**
 
 - **There is no input method for the webpage's frontend...yet. User inputs will work through your IDE and console/terminal.**
 
 - **The IDE-Console/Terminal will function as is, the Streamlit web-application is a bit unstable, proceed at your own discretion.**
 
-# Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.5.2(C) (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
+# Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.6 (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
 
 
 
-# Proof of Concept Images: v1.5.2(C) (Alpha)
+# Proof of Concept Images: v1.6 (Alpha)
 ![image](https://user-images.githubusercontent.com/100003892/224578804-15167262-bd7f-4c55-b64e-69fde7a88830.png)
 
 
