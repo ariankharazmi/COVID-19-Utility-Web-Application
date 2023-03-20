@@ -17,7 +17,7 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 # Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.6 (Alpha)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
 
 * ## Web View: v1.6 (Alpha)
-### ![image](https://user-images.githubusercontent.com/100003892/226227485-20907d21-83f2-4143-a889-a133700afba3.png)
+## ![image](https://user-images.githubusercontent.com/100003892/226227485-20907d21-83f2-4143-a889-a133700afba3.png)
 
 
 
