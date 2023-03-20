@@ -65,7 +65,7 @@ print(today)
 
 st.write("""You are visiting on:    """ + str(today))
 st.markdown("""
-* **Data sources: COVID Data API(s):** [Centers for Disease Control (CDC)](https://apidocs.covidactnow.org/), [Worldometers](https://github.com/CSSEGISandData/COVID-19), [New York Times](https://github.com/nytimes/covid-19-data)""")
+* **Data sources: COVID Data API(s):** [Centers for Disease Control](https://apidocs.covidactnow.org/), [Worldometers](https://github.com/CSSEGISandData/COVID-19), [New York Times](https://github.com/nytimes/covid-19-data)""")
 
 
 st.write("""
@@ -76,23 +76,23 @@ This webpage uses COVID-19 Data from different API sources to gather accurate da
 """)
 
 
-sidebar_selection = st.sidebar.radio(
-    'Select location data to display:',
-    ['Show All', 'Show Country', 'Show U.S State', 'Show U.S County'],
-)
-sidebar_selection = st.sidebar.radio(
-    'Select which data source to display:',
-    ['Show All Sources', 'Show CDC Data ', 'Show Worldometers Data', 'Show New York Times Data'],
-)
+#sidebar_selection = st.sidebar.radio(
+#    'Select location data to display:',
+#    ['Show All', 'Show Country', 'Show U.S State', 'Show U.S County'],
+#)
+#sidebar_selection = st.sidebar.radio(
+#    'Select which data source to display:',
+#    ['Show All Sources', 'Show CDC Data ', 'Show Worldometers Data', 'Show New York Times Data'],
+#)
+
+
+st.subheader('Please enter corresponding information into the fields below to retrieve Coronavirus data.')
 
 
 
-st.header('Please enter corresponding information into the boxes below.')
-
-st.subheader('Display COVID-19 data based on user inputs')
-selected_country = st.sidebar.selectbox('Country', dict())
-selected_state = st.sidebar.selectbox('State', dict())
-selected_county = st.sidebar.selectbox('County', dict())
+#selected_country = st.sidebar.selectbox('Country', dict())
+#selected_state = st.sidebar.selectbox('State', dict())
+#selected_county = st.sidebar.selectbox('County', dict())
 
 
 dictionary_1 = country_list
@@ -118,9 +118,13 @@ def get_dsh_data(location_country):
         confirmed_cases = data["cases"]
         deaths = data["deaths"]
         recovered = data["recovered"]
-        return f"Confirmed COVID-19 cases in {location_country}: {confirmed_cases:,}\nConfirmed COVID-19 Deaths: {deaths:,}\nConfirmed COVID-19 Recovered: {recovered:,}"
+        st.subheader(f"COVID-19 Data for {location_country}")
+        st.write("- Confirmed cases: {:,.0f}".format(confirmed_cases))
+        st.write("- Confirmed deaths: {:,.0f}".format(deaths))
+        st.write("- Confirmed recoveries: {:,.0f}".format(recovered))
+        return None
     else:
-        return "Unable to retrieve data"
+        st.write(f"Unable to retrieve Coronavirus data for {location_country}")
 
 location_country = st.text_input("Enter the name of your country:")
 if location_country:
@@ -140,9 +144,13 @@ def get_covid_data(location_state):
         confirmed_cases = data["cases"]
         deaths = data["deaths"]
         recovered = data["recovered"]
-        return f"Confirmed COVID-19 cases in {location_state}: {confirmed_cases:,}\nConfirmed COVID-19 Deaths: {deaths:,}\nConfirmed COVID-19 Recovered: {recovered:,}"
+        st.subheader(f"COVID-19 Data for {location_state}")
+        st.write("- Confirmed cases: {:,.0f}".format(confirmed_cases))
+        st.write("- Confirmed deaths: {:,.0f}".format(deaths))
+        st.write("- Presumed recoveries**: {:,.0f}".format(recovered))
+        return None
     else:
-        return "Unable to retrieve Coronavirus data"
+        st.write(f"Unable to retrieve Coronavirus data for {location_state}")
 
 location_state = st.text_input("Enter the name of your U.S State:")
 if location_state:
@@ -155,22 +163,61 @@ if location_state:
 
 
 # County data is still giving us errors, let's come back to it later. - 03/20/2023
-
-#def get_cdc_data(county):
-#    url = f"https://data.cdc.gov/resource/3nnm-4jni.json{county}"
+#def get_actnow_data(location_county):
+#    url = f"https://api.covidactnow.org/v2/counties.json?apiKey=c4edd54144b943c68a637a1b64194c0c{location_county}"
 #    response = requests.get(url)
 #    if response.status_code == 200:
 #        data = response.json()
 #        confirmed_cases = data["cases"]
 #        deaths = data["deaths"]
 #        recovered = data["recovered"]
-#        return f"Confirmed cases in {county}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
+#        return f"Confirmed cases in {location_county}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
 #    else:
-#        return "Unable to retrieve data"
+#        return "Unable to retrieve Coronavirus data for {location_county}"
 
 
-#county = input("Enter the name of your county: ")
-#print(get_cdc_data(county))
-#st.write(get_cdc_data(county))
+#location_county = input("Enter the name of your county: ")
+#if location_county:
+#    st.write(get_actnow_data(location_county))
 
 
+
+with st.sidebar.expander("Click here to learn more about the COVID-19 Utility (Web-Application)"):
+    st.markdown(f"""
+    The COVID-19 Utility Web Application was developed to track and monitor data regarding the Coronavirus Pandemic to better understand the data surrounding it in an easy-to-use, friendly manner.
+
+    COVID Data traced from:
+    [Disease.SH](https://github.com/CSSEGISandData/COVID-19), [*COVIDActNow Org*](https://covidactnow.org/), [New York Times](https://github.com/nytimes/covid-19-data)
+
+    *COVID-19 Utility (Web Application) data last updated on {str(today)}.*  
+    """)
+
+
+
+st.write("""
+* **Quick Web Links**
+[**CDC Coronavirus Statistics Website**](https://www.cdc.gov/coronavirus/2019-nCoV/index.html)""")
+st.write("""
+[**New York Times Coronavirus Statistics Website**](https://www.nytimes.com/interactive/2021/us/covid-cases.html)""")
+st.write("""
+[**Do I have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html)""")
+st.write("""
+[**What should I do if I have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/if-you-are-sick/steps-when-sick.html)""")
+st.write("""
+[**Where can I get masks, vaccines, and tests?**](https://www.covid.gov/)""")
+st.write("""
+[**Can I get a flu shot and a COVID-19 Vaccine at the same time?**](https://www.cdc.gov/flu/prevent/coadministration.htm)""")
+st.write("""
+[**COVID-19 Common Questions**](https://www.fda.gov/emergency-preparedness-and-response/coronavirus-disease-2019-covid-19/covid-19-frequently-asked-questions)""")
+
+t1, t2 = st.columns(2)
+# with t1:
+#
+# st.markdown('# COVID-19 Utility Data Dashboard')
+
+with t2:
+    st.write("")
+    st.write("")
+    st.write("""
+    **Built by Arian Kharazmi**
+    """)
