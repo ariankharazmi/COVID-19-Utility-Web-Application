@@ -1,4 +1,6 @@
 import time
+
+import matplotlib
 import requests
 from bs4 import BeautifulSoup as soup
 from urllib.request import Request, urlopen
@@ -21,6 +23,8 @@ import streamlit.components.v1 as components
 from pandas.io.json import json_normalize
 from datetime import date
 import json
+
+from streamlit.elements.selectbox import SelectboxMixin
 from urllib3.util import url
 mpl.use("agg")
 
@@ -61,7 +65,7 @@ print(today)
 
 st.write("""You are visiting on:    """ + str(today))
 st.markdown("""
-* **Data sources: COVID Data API(s):** [COVID-Act-Now.com](https://apidocs.covidactnow.org/), [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19), [New York Times](https://github.com/nytimes/covid-19-data)""")
+* **Data sources: COVID Data API(s):** [Centers for Disease Control (CDC)](https://apidocs.covidactnow.org/), [Worldometers](https://github.com/CSSEGISandData/COVID-19), [New York Times](https://github.com/nytimes/covid-19-data)""")
 
 
 st.write("""
@@ -74,32 +78,36 @@ This webpage uses COVID-19 Data from different API sources to gather accurate da
 
 sidebar_selection = st.sidebar.radio(
     'Select location data to display:',
-    ['Show All', 'Show State', 'Show County', 'Show U.S National'],
+    ['Show All', 'Show Country', 'Show U.S State', 'Show U.S County'],
 )
 sidebar_selection = st.sidebar.radio(
     'Select which data source to display:',
-    ['Show All Sources', 'Show COVIDActNow Data ', 'Show Johns Hopkins University Data', 'Show New York Times Data'],
+    ['Show All Sources', 'Show CDC Data ', 'Show Worldometers Data', 'Show New York Times Data'],
 )
 
 
 
-st.header('Please enter corresponding information into your console-terminal')
+st.header('Please enter corresponding information into the boxes below.')
 
 st.subheader('Display COVID-19 data based on user inputs')
+selected_country = st.sidebar.selectbox('Country', dict())
 selected_state = st.sidebar.selectbox('State', dict())
 selected_county = st.sidebar.selectbox('County', dict())
-selected_country = st.sidebar.selectbox('Country', dict())
+
 
 dictionary_1 = country_list
 dictionary_2 = us_state_fip, us_state_list, us_state_to_abbrev
 dictionary_3 = us_state_county
 
 # Streamlit Webpage Text Entry
-country_input = st.text_input("Enter your country")
-state_input = st.text_input("Enter your state")
-county_input = st.text_input("Enter your state's county")
+##country_input = st.text_input("Enter your country")
+##state_input = st.text_input("Enter your state")
+##county_input = st.text_input("Enter your state's county")
 
-# Worldometers API
+
+
+# Disease.SH API
+
 
 def get_dsh_data(location_country):
     url = f"https://disease.sh/v3/covid-19/countries/{location_country}"
@@ -107,17 +115,19 @@ def get_dsh_data(location_country):
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        # parse the data to get the desired information
         confirmed_cases = data["cases"]
         deaths = data["deaths"]
         recovered = data["recovered"]
-        return f"Confirmed cases in {location_country}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
+        return f"Confirmed COVID-19 cases in {location_country}: {confirmed_cases:,}\nConfirmed COVID-19 Deaths: {deaths:,}\nConfirmed COVID-19 Recovered: {recovered:,}"
     else:
         return "Unable to retrieve data"
 
-location_country = input("Enter the name of your country: ")
-print(get_dsh_data(location_country))
-st.write(get_dsh_data(location_country))
+location_country = st.text_input("Enter the name of your country:")
+if location_country:
+    st.write(get_dsh_data(location_country))
+#location_country = input("Enter the name of your country: ")
+#print(get_dsh_data(location_country))
+#st.write(get_dsh_data(location_country))
 
 
 
@@ -127,54 +137,40 @@ def get_covid_data(location_state):
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        # parse the data to get the desired information
         confirmed_cases = data["cases"]
         deaths = data["deaths"]
         recovered = data["recovered"]
-        return f"Confirmed cases in {location_state}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
+        return f"Confirmed COVID-19 cases in {location_state}: {confirmed_cases:,}\nConfirmed COVID-19 Deaths: {deaths:,}\nConfirmed COVID-19 Recovered: {recovered:,}"
     else:
-        return "Unable to retrieve data"
+        return "Unable to retrieve Coronavirus data"
 
-location_state = input("Enter the name of your state: ")
-print(get_covid_data(location_state))
-st.write(get_covid_data(location_state))
+location_state = st.text_input("Enter the name of your U.S State:")
+if location_state:
+    st.write(get_covid_data(location_state))
 
-# NYT API
 
-#def get_nyt_data(location):
-    #url = f"https://disease.sh/v3/covid-19/nyt/counties?lastdays=all{location}"
+#location_state = input("Enter the name of your state: ")
+#print(get_covid_data(location_state))
+#st.write(get_covid_data(location_state))
 
-    #response = requests.get(url)
-    #if response.status_code == 200:
-        #data = response.json()
-        # parse the data to get the desired information
-        #confirmed_cases = data["cases"]
-        #deaths = data["deaths"]
-        #recovered = data["recovered"]
-        #return f"Confirmed cases in {location}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
-    #else:
-        #return "Unable to retrieve data for county"
 
-#location = input("Enter the name of your county: ")
-#print(get_nyt_data(location))
-#st.write(get_nyt_data(location))
+# County data is still giving us errors, let's come back to it later. - 03/20/2023
 
-# Other API(s) below
+#def get_cdc_data(county):
+#    url = f"https://data.cdc.gov/resource/3nnm-4jni.json{county}"
+#    response = requests.get(url)
+#    if response.status_code == 200:
+#        data = response.json()
+#        confirmed_cases = data["cases"]
+#        deaths = data["deaths"]
+#        recovered = data["recovered"]
+#        return f"Confirmed cases in {county}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
+#    else:
+#        return "Unable to retrieve data"
 
-def get_cdc_data(location_county):
-    url = f"https://data.cdc.gov/resource/3nnm-4jni.json{location_county}"
 
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        # parse the data to get the desired information
-        confirmed_cases = data["cases"]
-        deaths = data["deaths"]
-        recovered = data["recovered"]
-        return f"Confirmed cases in {location_county}: {confirmed_cases:,}\nDeaths: {deaths:,}\nRecovered: {recovered:,}"
-    else:
-        return "Unable to retrieve data"
+#county = input("Enter the name of your county: ")
+#print(get_cdc_data(county))
+#st.write(get_cdc_data(county))
 
-location_county = input("Enter the name of your county: ")
-print(get_cdc_data(location_county))
-st.write(get_cdc_data(location_county))
+

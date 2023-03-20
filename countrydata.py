@@ -1,5 +1,5 @@
 
-#v1.5.2(C)
+#v1.6
 country_list = {
 
     "United States": "USA",
