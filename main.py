@@ -20,7 +20,7 @@ from matplotlib.backends.backend_agg import RendererAgg
 import matplotlib.dates as dates
 import altair as alt
 import streamlit.components.v1 as components
-# from pandas.io.json import json_normalize # Will return with more documentation
+from pandas.io.json import json_normalize
 from datetime import date
 import json
 
@@ -68,12 +68,15 @@ st.markdown("""
 * **Data sources: COVID Data API(s):** [Centers for Disease Control](https://apidocs.covidactnow.org/), [Worldometers](https://github.com/CSSEGISandData/COVID-19), [New York Times](https://github.com/nytimes/covid-19-data)""")
 
 
-st.write("""
-This webpage uses COVID-19 Data from different API sources to gather accurate data and present it in one place.
+## 04-09-2023:
+# We do not need this snippet as data retrieved outputs accurate data
 
-**This is an early version of the program, please do not take COVID-19 data presented here as an accurate reflection.**
-***
-""")
+#st.write("""
+#This webpage uses COVID-19 Data from different API sources to gather accurate data and present it in one place.
+
+#**This is an early version of the program, please do not take COVID-19 data presented here as an accurate reflection.**
+#***
+#""")
 
 
 #sidebar_selection = st.sidebar.radio(
@@ -105,7 +108,6 @@ dictionary_3 = us_state_county
 ##county_input = st.text_input("Enter your state's county")
 
 
-
 # Disease.SH API
 
 
@@ -122,11 +124,18 @@ def get_dsh_data(location_country):
         st.write("- Confirmed cases: {:,.0f}".format(confirmed_cases))
         st.write("- Confirmed deaths: {:,.0f}".format(deaths))
         st.write("- Confirmed recoveries: {:,.0f}".format(recovered))
+        plt.plot(date, confirmed_cases)
+        plt.plot(date, deaths)
+        plt.plot(date, recovered)
+        plt.title(f"Coronavirus data for {location_country}")
+        plt.xlabel('Date')
+        plt.ylabel('Numbers')
+        plt.show()
         return None
     else:
         st.write(f"Unable to retrieve Coronavirus data for {location_country}")
 
-location_country = st.text_input("Enter the name of your country:")
+location_country = st.text_input("Enter the name of your country: **Leave blank or change input for different locations**")
 if location_country:
     st.write(get_dsh_data(location_country))
 #location_country = input("Enter the name of your country: ")
@@ -148,13 +157,21 @@ def get_covid_data(location_state):
         st.write("- Confirmed cases: {:,.0f}".format(confirmed_cases))
         st.write("- Confirmed deaths: {:,.0f}".format(deaths))
         st.write("- Presumed recoveries**: {:,.0f}".format(recovered))
+        plt.plot(date, confirmed_cases)
+        plt.plot(date, deaths)
+        plt.plot(date, recovered)
+        plt.title(f"Coronavirus data for {location_state}")
+        plt.xlabel('Date')
+        plt.ylabel('Numbers')
+        plt.show()
         return None
     else:
         st.write(f"Unable to retrieve Coronavirus data for {location_state}")
 
-location_state = st.text_input("Enter the name of your U.S State:")
+location_state = st.text_input("Enter the name of your U.S State: **Leave blank or change input for different locations**")
 if location_state:
     st.write(get_covid_data(location_state))
+
 
 
 #location_state = input("Enter the name of your state: ")
@@ -187,15 +204,15 @@ with st.sidebar.expander("Click here to learn more about the COVID-19 Utility (W
     The COVID-19 Utility Web Application was developed to track and monitor data regarding the Coronavirus Pandemic to better understand the data surrounding it in an easy-to-use, friendly manner.
 
     COVID Data traced from:
-    [Disease.SH](https://github.com/CSSEGISandData/COVID-19), [*COVIDActNow Org*](https://covidactnow.org/), [New York Times](https://github.com/nytimes/covid-19-data)
+    [Disease.SH](https://github.com/disease-sh/api), [COVIDActNow Org](https://covidactnow.org/), [New York Times](https://github.com/nytimes/covid-19-data)
 
-    *COVID-19 Utility (Web Application) data last updated on {str(today)}.*  
+    **COVID-19 Utility (Web Application) data last updated on {str(today)}.**  
     """)
 
 
 
 st.write("""
-* **Quick Web Links**
+* **Quick Web Links (US)**
 [**CDC Coronavirus Statistics Website**](https://www.cdc.gov/coronavirus/2019-nCoV/index.html)""")
 st.write("""
 [**New York Times Coronavirus Statistics Website**](https://www.nytimes.com/interactive/2021/us/covid-cases.html)""")
