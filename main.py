@@ -20,7 +20,7 @@ from matplotlib.backends.backend_agg import RendererAgg
 import matplotlib.dates as dates
 import altair as alt
 import streamlit.components.v1 as components
-from pandas.io.json import json_normalize
+#import pandas.json.json_normalize
 from datetime import date
 import json
 
