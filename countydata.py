@@ -1,6 +1,6 @@
-# County Configurations... still not responding...
+# County Configurations...
 
-# v1.6.1
+# v1.6.2
 
 ## US State County Data
 us_state_county = {
