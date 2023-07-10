@@ -124,13 +124,6 @@ def get_dsh_data(location_country):
         st.write("- Confirmed cases: {:,.0f}".format(confirmed_cases))
         st.write("- Confirmed deaths: {:,.0f}".format(deaths))
         st.write("- Confirmed recoveries: {:,.0f}".format(recovered))
-        plt.plot(date, confirmed_cases)
-        plt.plot(date, deaths)
-        plt.plot(date, recovered)
-        plt.title(f"Coronavirus data for {location_country}")
-        plt.xlabel('Date')
-        plt.ylabel('Numbers')
-        plt.show()
         return None
     else:
         st.write(f"Unable to retrieve Coronavirus data for {location_country}")
@@ -157,13 +150,6 @@ def get_covid_data(location_state):
         st.write("- Confirmed cases: {:,.0f}".format(confirmed_cases))
         st.write("- Confirmed deaths: {:,.0f}".format(deaths))
         st.write("- Presumed recoveries**: {:,.0f}".format(recovered))
-        plt.plot(date, confirmed_cases)
-        plt.plot(date, deaths)
-        plt.plot(date, recovered)
-        plt.title(f"Coronavirus data for {location_state}")
-        plt.xlabel('Date')
-        plt.ylabel('Numbers')
-        plt.show()
         return None
     else:
         st.write(f"Unable to retrieve Coronavirus data for {location_state}")
@@ -216,6 +202,8 @@ st.write("""
 [**CDC Coronavirus Statistics Website**](https://www.cdc.gov/coronavirus/2019-nCoV/index.html)""")
 st.write("""
 [**New York Times Coronavirus Statistics Website**](https://www.nytimes.com/interactive/2021/us/covid-cases.html)""")
+st.write("""
+[**Where can I view U.S County level data?**](https://www.cdc.gov/coronavirus/2019-ncov/your-health/covid-by-county.html)""")
 st.write("""
 [**Do I have COVID-19?**](https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html)""")
 st.write("""
