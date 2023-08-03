@@ -3,8 +3,6 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/ariankharazmi/COVID-19-Utility-Web-Application) ![GitHub last commit](https://img.shields.io/github/last-commit/ariankharazmi/COVID-19-Utility-Web-Application) ![GitHub Release Date](https://img.shields.io/github/release-date/ariankharazmi/covid-19-utility-web-application) ![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/ariankharazmi/covid-19-utility-web-application)
 
-- **Streamlit is NOW available with the latest version.**
-
 - **COVID-19-Utility-Web-Application v1.6.2 (Beta) can run (localized) through your IDE or accessed via the Streamlit webpage.**
 
 # Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.6.2 (Beta)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
