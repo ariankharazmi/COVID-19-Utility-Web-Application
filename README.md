@@ -7,10 +7,6 @@ A program that gathers Coronavirus (COVID-19) data and employs its statistics on
 
 - **COVID-19-Utility-Web-Application v1.6.2 (Beta) can run (localized) through your IDE or accessed via the Streamlit webpage.**
 
-- **There is now an input method for the webpage's frontend! User inputs will work through the boxes on the webpage.**
-
-- **You can now access the COVID-19-Utility (Web Version) through your mobile device!!**
-
 # Streamlit Webpage ---> [COVID-19-Utility-Web-Application v1.6.2 (Beta)](https://ariankharazmi-covid-19-utility-web-application-main-xlxt4l.streamlit.app/)
 
 * ## Web View: v1.6.2 (Beta)
