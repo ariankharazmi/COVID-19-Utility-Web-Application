@@ -45,7 +45,7 @@ plt.rcParams['xtick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['figure.figsize'] = 6, 6
 
-apiKey = 'c4edd54144b943c68a637a1b64194c0c'
+apiKey = 'YOUR_API_KEY'
 
 _ENABLE_PROFILING = False
 
@@ -226,3 +226,4 @@ with t2:
     st.write("""
     **Built by Arian Kharazmi**
     """)
+
